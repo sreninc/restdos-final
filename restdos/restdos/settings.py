@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +84,12 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+TAILWIND_APP_NAME = 'theme' # required for django-tailwind
+
+INTERNAL_IPS = [
+    "127.0.0.1", # required for django-tailwind
+]
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
