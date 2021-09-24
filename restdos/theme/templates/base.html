@@ -3,21 +3,46 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!-- Required Meta Tags -->
+
+
+		{% block meta %}
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% endblock %}
 
-    	<title>RestDos</title>
+		{% block extra_meta %}
+		{% endblock %}
+
+		{% block corecss %}
+		{% endblock %}
+
+		{% block extra_css %}
+		{% endblock %}
+
+		{% block corejs %}
+		{% endblock %}
+
+		{% block extra_js %}
+		{% endblock %}
+
+    	<title>RestDos {% block extra_title %}{% endblock %}</title>
 		
 		{% tailwind_css %}
 	</head>
 
-	<body class="bg-grey-lightest font-serif leading-normal tracking-normal">
-		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
-				<h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-			</section>
-		</div>
+	<body>
+		{% if messages %}
+			<div class="message-container"></div>
+		{% endif %}
+
+		{% block page_header %}
+		{% endblock %}
+
+		{% block content %}
+		{% endblock %}
+
+		{% block postloadjs %}
+		{% endblock %}
 	</body>
 </html>
