@@ -26,7 +26,7 @@
 		{% block extra_js %}
 		{% endblock %}
 
-    	<title>RestDos {% block extra_title %}{% endblock %}</title>
+    	<title>RestDos | {% block extra_title %}{% endblock %}</title>
 		
 		{% tailwind_css %}
 	</head>
@@ -40,6 +40,9 @@
 		{% endblock %}
 
 		{% block content %}
+		{% endblock %}
+
+		{% block footer %}
 		{% endblock %}
 
 		{% block postloadjs %}
