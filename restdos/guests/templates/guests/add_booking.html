@@ -1,0 +1,114 @@
+{% extends "bases/base-app.html" %}
+
+{% block extra_title %}Add Booking{% endblock %}
+
+{% block body %}
+
+
+
+<div class="mt-10 sm:mt-0">
+
+    <div class="lg:grid lg:grid-cols-3 lg:gap-6">
+        <div class="lg:col-span-1">
+            <div class="px-4 sm:px-0">
+                <h3 class="text-lg font-medium leading-6 text-gray-900">
+                    Add Booking
+                </h3>
+                <p class="mt-1 text-sm text-gray-600">
+                    Contact and other useful information about the guest.
+                </p>
+            </div>
+        </div>
+        <div class="mt-5 md:mt-0 md:col-span-2">
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="px-4 py-5 bg-white sm:p-6">
+                        <div class="grid grid-cols-6 gap-6">
+            
+                            <input type="hidden" value="1" name="business_id" id="business_id">
+                            
+                            <!-- First name input -->
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="date" class="block text-sm font-medium text-gray-700">
+                                    Date
+                                </label>
+                                <input
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                type="date"
+                                name="date"
+                                id="date"
+                                required
+                                >
+                                <div class="px-2.5 py-0.5 mt-1 rounded-full text-xs font-medium bg-red-100 text-red-800 whitespace-nowrap w-min hidden">
+                                    Date is required
+                                </div>
+                            </div>
+            
+                            <!-- Last name input -->
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="time" class="block text-sm font-medium text-gray-700">
+                                    Time
+                                </label>
+                                <input
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                type="time"
+                                name="time"
+                                id="time"
+                                required
+                                >
+                                <div class="px-2.5 py-0.5 mt-1 rounded-full text-xs font-medium bg-red-100 text-red-800 whitespace-nowrap w-min hidden">
+                                    Time is required
+                                </div>
+                            </div>
+            
+                            <!-- Email input -->
+                            <div class="col-span-6 sm:col-span-3">
+                                <label for="people" class="block text-sm font-medium text-gray-700">
+                                    People
+                                </label>
+                                <input
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                type="number"
+                                name="people"
+                                id="people"
+                                value="2"
+                                required
+                                >
+                                <div class="px-2.5 py-0.5 mt-1 rounded-full text-xs font-medium bg-red-100 text-red-800 whitespace-nowrap w-min hidden">
+                                    People is required
+                                </div>
+                            </div>
+            
+            
+                        </div>
+                    </div>
+            
+                    <!-- Submit or cancel -->
+                    <div class="px-4 py-3 bg-indigo-50 text-right sm:px-6">
+                        <a 
+                        type="button"
+                        href="{% url 'guests' %}"
+                        class="inline-flex items-center px-4 py-2 text-sm font-medium text-red-700 hover:text-red-500">
+                            Cancel
+                        </a>
+                        <button 
+                        type="submit"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Save
+                        </button>
+                    </div>
+            
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="hidden sm:block" aria-hidden="true">
+    <div class="py-5">
+        <div class="border-t border-gray-200"></div>
+    </div>
+</div>
+{% endblock %}

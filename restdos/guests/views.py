@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Guest
+from bookings.models import Booking
 
 # Create your views here.
 def guests(request):
@@ -47,3 +48,18 @@ def guest_detail(request, guest_id):
     }
 
     return render(request, 'guests/guest_detail.html', context)
+
+
+def add_booking(request, guest_id):
+
+    guest = get_object_or_404(Guest, pk=guest_id)
+    guest.unrating = 5 - guest.rating
+    guest.rating = range(guest.rating)
+    guest.unrating = range(guest.unrating)
+
+    context = {
+        'guest': guest
+    }
+
+    return render(request, 'guests/add_booking.html', context)
+

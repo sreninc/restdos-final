@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'theme',
     'website',
     'guests',
+    'bookings',
 ]
 
 MIDDLEWARE = [
