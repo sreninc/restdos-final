@@ -16,7 +16,7 @@ def guests(request):
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('guests'))
 
-            queries = Q(first_name__icontains=query) | Q(last_name__icontains=query)
+            queries = Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(mobile__icontains=query) | Q(email__icontains=query)
             guests = guests.filter(queries)
 
 
