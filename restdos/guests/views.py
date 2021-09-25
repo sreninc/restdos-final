@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Guest
 
 # Create your views here.
@@ -15,3 +15,15 @@ def guests(request):
     }
 
     return render(request, 'guests/guests.html', context)
+
+
+def guest_detail(request, guest_id):
+
+    guest = get_object_or_404(Guest, pk=guest_id)
+    guest.unrating = 5 - guest.rating
+
+    context = {
+        'guest': guest
+    }
+
+    return render(request, 'guests/guest_detail.html', context)

@@ -36,7 +36,7 @@
                         {% for guest in guests %}
                         <tr class="bg-white">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 underline">
-                              <a href="#"
+                              <a href="{% url 'guest_detail' guest.id %}"
                               class="text-indigo-600 hover:text-indigo-900">
                                   {{ guest.first_name }} {{ guest.last_name }}
                               </a>
