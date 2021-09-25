@@ -1,0 +1,24 @@
+[
+    {
+        "pk": 1,
+        "model": "guests.guest",
+        "fields": {
+            "first_name": "Sean",
+            "last_name": "O'Sullivan",
+            "mobile": "0896023853",
+            "email": "sreninc@gmail.com",
+            "rating": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "guests.guest",
+        "fields": {
+            "first_name": "Erick",
+            "last_name": "Brassfield",
+            "mobile": "0894147283",
+            "email": "brassfield@gmail.com",
+            "rating": 5
+        }
+    }
+]
