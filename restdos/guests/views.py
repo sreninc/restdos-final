@@ -39,6 +39,8 @@ def guest_detail(request, guest_id):
 
     guest = get_object_or_404(Guest, pk=guest_id)
     guest.unrating = 5 - guest.rating
+    guest.rating = range(guest.rating)
+    guest.unrating = range(guest.unrating)
 
     context = {
         'guest': guest
