@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+
 from .models import Guest
 from bookings.models import Booking
 
@@ -19,6 +20,7 @@ def guests(request):
 
             queries = Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(mobile__icontains=query) | Q(email__icontains=query)
             guests = guests.filter(queries)
+            messages.success(request, f'Searched for "{query}" successfully.')
 
 
     
