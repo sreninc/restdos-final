@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'tailwind',
-    'theme',
+    'tailwind', # Required for Tailwind
+    'theme', # Required for Tailwind
+    'crispy_forms', # Required for crispy forms
+    'crispy_tailwind', # Required for crispy forms
     'website',
     'signup',
     'guests',
@@ -73,6 +75,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -106,6 +112,10 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'restdos.wsgi.application'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind" # Required for crispy forms
+
+CRISPY_TEMPLATE_PACK = "tailwind" # Required for crispy forms
 
 
 # Database
