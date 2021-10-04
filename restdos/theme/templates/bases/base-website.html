@@ -6,7 +6,7 @@
       <div class="relative bg-white">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
           <div class="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
+            <a href="{% url 'home' %}">
               <span class="sr-only">Workflow</span>
               <img class="h-8 w-auto sm:h-10" src="https://media.istockphoto.com/vectors/triquetra-sign-icon-leaflike-celtic-symbol-trinity-or-trefoil-knot-vector-id1266868632?k=6&m=1266868632&s=612x612&w=0&h=FCknqxeD4McfNnH9HhvIv_IV0KZ4BPdMm8sGWgXUnKk=" alt="">
             </a>
@@ -120,13 +120,13 @@
               </div>
             </div>
   
-            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+            <a href="{% url 'pricing' %}" class="text-base font-medium text-gray-500 hover:text-gray-900">
               Pricing
             </a>
             <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
               Blog
             </a>
-            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+            <a href="{% url 'contact' %}" class="text-base font-medium text-gray-500 hover:text-gray-900">
               Contact
             </a>
           </nav>
@@ -134,7 +134,7 @@
             <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
               Sign in
             </a>
-            <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-blue-700">
+            <a href="{% url 'pricing' %}" class="ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-blue-700">
               Sign up
             </a>
           </div>
@@ -221,7 +221,7 @@
             </div>
             <div class="py-6 px-5">
               <div class="grid grid-cols-2 gap-4">
-                <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                <a href="{% url 'pricing' %}" class="text-base font-medium text-gray-900 hover:text-gray-700">
                   Pricing
                 </a>
                 <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
@@ -232,7 +232,7 @@
                 </a>
               </div>
               <div class="mt-6">
-                <a href="#" class="w-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-blue-700">
+                <a href="{% url 'pricing' %}" class="w-full flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 bg-origin-border px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white hover:from-purple-700 hover:to-blue-700">
                   Sign up
                 </a>
                 <p class="mt-6 text-center text-base font-medium text-gray-500">
@@ -264,7 +264,7 @@
       <a href="#" class="flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700">
         Learn more
       </a>
-      <a href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100">
+      <a href="{% url 'pricing' %}" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100">
         Get started
       </a>
     </div>
@@ -316,7 +316,7 @@
               </h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'pricing' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Pricing
                   </a>
                 </li>
@@ -334,7 +334,7 @@
                 </li> -->
 
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'contact' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Contact
                   </a>
                 </li>
