@@ -8,3 +8,8 @@ def index(request):
 def pricing(request):
 
     return render(request, 'website/pricing.html')
+
+
+def contact(request):
+
+    return render(request, 'website/contact.html')
