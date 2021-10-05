@@ -15,6 +15,8 @@ def billing(request):
         'signup_plan': signup_plan,
         'signup_monthly': signup_monthly,
         'signup_form': signup_form,
+        'stripe_public_key': 'sk_test_51JhGLYFayXVaCl2yUFk4s9rJ1K71cjinE8JRQbdISSp9HWtyAwHY1HTEDxkKyaS1JL3bCmoKLzh6BJCX6BSyYDfo00j4hZWAgR',
+        'client_secret': 'test client secret',
     }
 
     if not signup_plan:
