@@ -2244,6 +2244,11 @@ select {
   text-decoration: underline;
 }
 
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .placeholder-gray-500::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
