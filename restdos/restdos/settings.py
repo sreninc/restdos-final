@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'crispy_forms', # Required for crispy forms
     'crispy_tailwind', # Required for crispy forms
     'website',
-    'signup',
     'guests',
     'bookings',
 ]
