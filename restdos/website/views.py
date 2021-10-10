@@ -25,6 +25,25 @@ def signup(request, signup_plan, signup_monthly):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    if request.method == 'POST':
+        form_data = {
+            'first_name': request.POST['first_name'],
+            'last_name': request.POST['last_name'],
+            'email': request.POST['email'],
+            'mobile': request.POST['mobile'],
+            'signup_plan': request.POST['signup_plan'],
+            'signup_monthly': request.POST['signup_monthly'],
+        }
+        signup_form = SignupForm(form_data)
+        if signup_form.is_valid():
+            signup_form.save()
+            return redirect(reverse('signup_success'))
+        else:
+            print(signup_form.errors)
+    else:
+        messages.info(request, 'There was an error with your form. \
+        Please double check your information.')
+
     stripe_total = round(int(signup_monthly) * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
@@ -33,7 +52,12 @@ def signup(request, signup_plan, signup_monthly):
     )
 
 
-    signup_form = SignupForm()
+    signup_form = SignupForm(
+        initial = {
+            'signup_plan': signup_plan,
+            'signup_monthly': signup_monthly,
+        }
+    )
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -55,5 +79,5 @@ def signup(request, signup_plan, signup_monthly):
     return render(request, 'website/signup.html', context)
 
 
-def payment(request):
-    return redner(request) 
+def signup_success(request):
+    return render(request, 'website/new_user.html') 
