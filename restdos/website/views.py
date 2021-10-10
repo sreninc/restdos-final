@@ -21,18 +21,15 @@ def contact(request):
     return render(request, 'website/contact.html')
 
 
-def signup(request):
+def signup(request, signup_plan, signup_monthly):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    signup_plan =  'First Advantage'
-    signup_monthly = 33
-    stripe_total = round(signup_monthly * 100)
+    stripe_total = round(int(signup_monthly) * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
-
     )
 
 
@@ -56,3 +53,7 @@ def signup(request):
     
 
     return render(request, 'website/signup.html', context)
+
+
+def payment(request):
+    return redner(request) 
