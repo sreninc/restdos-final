@@ -1752,6 +1752,11 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
+.from-blue-400 {
+  --tw-gradient-from: #60a5fa;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(96, 165, 250, 0));
+}
+
 .via-white {
   --tw-gradient-stops: var(--tw-gradient-from), #fff, var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
@@ -1774,6 +1779,14 @@ select {
 
 .to-gray-50 {
   --tw-gradient-to: #f9fafb;
+}
+
+.to-indigo-500 {
+  --tw-gradient-to: #6366f1;
+}
+
+.to-indigo-800 {
+  --tw-gradient-to: #3730a3;
 }
 
 .bg-clip-text {
@@ -2470,12 +2483,21 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(109, 40, 217, 0));
 }
 
+.hover\:from-blue-500:hover {
+  --tw-gradient-from: #3b82f6;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(59, 130, 246, 0));
+}
+
 .hover\:to-blue-700:hover {
   --tw-gradient-to: #1d4ed8;
 }
 
 .hover\:to-indigo-700:hover {
   --tw-gradient-to: #4338ca;
+}
+
+.hover\:to-indigo-600:hover {
+  --tw-gradient-to: #4f46e5;
 }
 
 .hover\:text-gray-500:hover {

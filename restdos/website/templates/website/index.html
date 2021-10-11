@@ -10,7 +10,7 @@
       <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
         <div class="absolute inset-0">
           <img class="h-full w-full object-cover" src="https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0" alt="People working on laptops">
-          <div class="absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700 mix-blend-multiply"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 mix-blend-multiply"></div>
         </div>
         <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
           <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
@@ -22,7 +22,7 @@
           </p>
           <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
             <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-              <a href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8">
+              <a href="{% url 'pricing' %}" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8">
                 Get started
               </a>
               <a href="#" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
@@ -93,22 +93,22 @@
         <div class="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
           <div>
             <div>
-              <span class="h-12 w-12 rounded-md flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-600">
-                <!-- Heroicon name: outline/inbox -->
-                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+              <span class="h-12 w-12 rounded-md flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600">
+                <!-- Heroicon name: outline/user -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </span>
             </div>
             <div class="mt-6">
               <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">
-                Stay on top of customer support
+                All your guests needs in one place
               </h2>
               <p class="mt-4 text-lg text-gray-500">
-                Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis bibendum malesuada faucibus lacinia porttitor. Pulvinar laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at. Lectus viverra dui tellus ornare pharetra.
+                Never forget what a guest wants or needs again with our complete guest relationship management suite. Give your team all the information they need, when they need it for each and every booking.
               </p>
               <div class="mt-6">
-                <a href="#" class="inline-flex bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700">
+                <a href="{% url 'pricing' %}" class="inline-flex bg-gradient-to-r from-blue-500 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-blue-500 hover:to-indigo-600">
                   Get started
                 </a>
               </div>
@@ -118,7 +118,7 @@
             <blockquote>
               <div>
                 <p class="text-base text-gray-500">
-                  &ldquo;Cras velit quis eros eget rhoncus lacus ultrices sed diam. Sit orci risus aenean curabitur donec aliquet. Mi venenatis in euismod ut.&rdquo;
+                  &ldquo;I honestly don't know how we managed before RestDos! Now we have all our service, kitchen and allergen notes just where we need them.&rdquo;
                 </p>
               </div>
               <footer class="mt-3">
@@ -127,7 +127,7 @@
                     <img class="h-6 w-6 rounded-full" src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
                   </div>
                   <div class="text-base font-medium text-gray-700">
-                    Marcia Hill, Digital Marketing Manager
+                    Marcia Hill, Restaurant General Manager
                   </div>
                 </div>
               </footer>
@@ -146,22 +146,22 @@
         <div class="px-4 max-w-xl mx-auto sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2">
           <div>
             <div>
-              <span class="h-12 w-12 rounded-md flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600">
-                <!-- Heroicon name: outline/sparkles -->
-                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              <span class="h-12 w-12 rounded-md flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600">
+                <!-- Heroicon name: outline/chat-alt-2 -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                 </svg>
               </span>
             </div>
             <div class="mt-6">
               <h2 class="text-3xl font-extrabold tracking-tight text-gray-900">
-                Better understand your customers
+                Messaging that stops no-shows
               </h2>
               <p class="mt-4 text-lg text-gray-500">
-                Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis bibendum malesuada faucibus lacinia porttitor. Pulvinar laoreet sagittis viverra duis. In venenatis sem arcu pretium pharetra at. Lectus viverra dui tellus ornare pharetra.
+                Automated messaging to gently remind your guests of their bookings to keep your bookings busy. And when you can't get a guest to confirm, direct messaging that will help nudge them to confirm their booking with you. 
               </p>
               <div class="mt-6">
-                <a href="#" class="inline-flex bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700">
+                <a href="{% url 'pricing' %}" class="inline-flex bg-gradient-to-r from-blue-500 to-indigo-600 bg-origin-border px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-blue-500 hover:to-indigo-600">
                   Get started
                 </a>
               </div>
@@ -178,28 +178,28 @@
   </div>
 
   <!-- Gradient Feature Section -->
-  <div class="bg-gradient-to-r from-purple-800 to-indigo-700">
+  <div class="bg-gradient-to-r from-blue-500 to-indigo-800">
     <div class="max-w-4xl mx-auto px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
       <h2 class="text-3xl font-extrabold text-white tracking-tight">
-        Inbox support built for efficiency
+        Continued solution for your restaurant
       </h2>
       <p class="mt-4 max-w-3xl text-lg text-purple-200">
-        Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis. Blandit aliquam sit nisl euismod mattis in.
+        RestDos has a range of features to help you better manage your restaurant, bookings, guests and team all in the one system.
       </p>
       <div class="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
         <div>
           <div>
             <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/inbox -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+              <!-- Heroicon name: outline/user -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Unlimited Inboxes</h3>
+            <h3 class="text-lg font-medium text-white">Team Profiles</h3>
             <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
+              Manage your teams access, logins and profile information.
             </p>
           </div>
         </div>
@@ -207,84 +207,17 @@
         <div>
           <div>
             <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/users -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              <!-- Heroicon name: outline/chart-pie -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
               </svg>
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Manage Team Members</h3>
+            <h3 class="text-lg font-medium text-white">Dashboard</h3>
             <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/trash -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-            </span>
-          </div>
-          <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Spam Report</h3>
-            <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/pencil-alt -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-            </span>
-          </div>
-          <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Compose in Markdown</h3>
-            <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/document-report -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </span>
-          </div>
-          <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Team Reporting</h3>
-            <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/reply -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-              </svg>
-            </span>
-          </div>
-          <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Saved Replies</h3>
-            <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
+              Keep on top of key restaurant performance indicators in your business dashboard.
             </p>
           </div>
         </div>
@@ -293,15 +226,15 @@
           <div>
             <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
               <!-- Heroicon name: outline/chat-alt -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Email Commenting</h3>
+            <h3 class="text-lg font-medium text-white">Direct SMS</h3>
             <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
+              Message your guests from their profiles and bookings.
             </p>
           </div>
         </div>
@@ -309,16 +242,84 @@
         <div>
           <div>
             <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
-              <!-- Heroicon name: outline/heart -->
-              <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              <!-- Heroicon name: outline/search -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-lg font-medium text-white">Connect with Customers</h3>
+            <h3 class="text-lg font-medium text-white">Guest Search</h3>
             <p class="mt-2 text-base text-purple-200">
-              Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
+              Quickly find profiles with the universal search bar.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
+              <!-- Heroicon name: outline/star -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-white">Guest Rating</h3>
+            <p class="mt-2 text-base text-purple-200">
+              Give each of your guests a star rating so you know who your best guests are.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
+              <!-- Heroicon name: outline/currency-euro -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-white">Revenue Overview</h3>
+            <p class="mt-2 text-base text-purple-200">
+              Track your revenue per booking and per guest.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
+              <!-- Heroicon name: outline/book-open -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-white">Booking Rating</h3>
+            <p class="mt-2 text-base text-purple-200">
+              Rate each booking so you know which shifts delivered the best experience for your guests.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div>
+            <span class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-10">
+              <!-- Heroicon name: outline/collection -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </span>
+          </div>
+          <div class="mt-6">
+            <h3 class="text-lg font-medium text-white">Data Ownership</h3>
+            <p class="mt-2 text-base text-purple-200">
+              As RestDos is not a marketplace you own 100% of your guest and booking data.
             </p>
           </div>
         </div>
