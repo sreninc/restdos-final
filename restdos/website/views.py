@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
 from .forms import SignupForm
+from .models import Signup
 
 import stripe
 
@@ -12,8 +13,38 @@ def index(request):
 
 
 def pricing(request):
+    signups = Signup.objects.count()
+    secondary_string = 'at a permanently reduced price for the next 10 customers'
+    if signups <= 10:
+        monthly = 33
+        primary_string = " €33 a month" 
+        plan = 'First Advantage'
+    elif signups <= 20:
+        monthly = 50
+        primary_string = ' €50 a month'
+        plan = 'Second Advantage'
+    elif signups <= 30:
+        monthly = 67
+        primary_string = ' €67 a month'
+        plan = 'Third Advantage'
+    elif signups <= 40:
+        monthly = 80
+        primary_string = ' €80 a month'
+        plan = 'Final Advantage'
+    else:
+        monthly = 100
+        primary_string = '100 a month'
+        plan = 'Complete Advantage'
+        secondary_string = 'including unlimited bookings and guests'
 
-    return render(request, 'website/pricing.html')
+    template = 'website/pricing.html'
+    context = {
+        'monthly': monthly,
+        'primary_string': primary_string,
+        'secondary_string': secondary_string,
+        'plan': plan,
+    }
+    return render(request, template, context)
 
 
 def contact(request):

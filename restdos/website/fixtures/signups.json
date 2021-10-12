@@ -1,0 +1,13 @@
+[
+    {
+        "pk": 1,
+        "model": "website.signup",
+        "fields": {
+            "first_name": "Sean",
+            "last_name": "O'Sullivan",
+            "mobile": "0896023853",
+            "email": "sreninc@gmail.com",
+            "created_date": "2020-01-01"
+        }
+    }
+]
