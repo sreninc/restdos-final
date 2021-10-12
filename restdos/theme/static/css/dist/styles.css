@@ -1752,11 +1752,6 @@ select {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
-.from-blue-400 {
-  --tw-gradient-from: #60a5fa;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(96, 165, 250, 0));
-}
-
 .via-white {
   --tw-gradient-stops: var(--tw-gradient-from), #fff, var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
@@ -1773,6 +1768,10 @@ select {
   --tw-gradient-to: #4338ca;
 }
 
+.to-indigo-800 {
+  --tw-gradient-to: #3730a3;
+}
+
 .to-white {
   --tw-gradient-to: #fff;
 }
@@ -1781,12 +1780,8 @@ select {
   --tw-gradient-to: #f9fafb;
 }
 
-.to-indigo-500 {
-  --tw-gradient-to: #6366f1;
-}
-
-.to-indigo-800 {
-  --tw-gradient-to: #3730a3;
+.to-gray-100 {
+  --tw-gradient-to: #f3f4f6;
 }
 
 .bg-clip-text {
@@ -1992,6 +1987,10 @@ select {
 
 .pt-10 {
   padding-top: 2.5rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .text-left {
@@ -2696,6 +2695,10 @@ select {
 
   .sm\:mt-8 {
     margin-top: 2rem;
+  }
+
+  .sm\:mt-10 {
+    margin-top: 2.5rem;
   }
 
   .sm\:block {
@@ -3449,12 +3452,24 @@ select {
     margin-top: 0px;
   }
 
+  .xl\:flex {
+    display: flex;
+  }
+
   .xl\:grid {
     display: grid;
   }
 
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:items-center {
+    align-items: center;
+  }
+
+  .xl\:justify-between {
+    justify-content: space-between;
   }
 
   .xl\:gap-8 {
