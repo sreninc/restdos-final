@@ -4,6 +4,7 @@ from .models import Signup
 # Register your models here.
 class SignupAdmin(admin.ModelAdmin):
     list_display = (
+        'account_number',
         'first_name',
         'last_name',
         'email',
