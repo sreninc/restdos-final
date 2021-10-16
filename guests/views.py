@@ -6,6 +6,7 @@ from .models import Guest
 from bookings.models import Booking
 
 from .forms import GuestDetailsForm
+from .forms import PersonalInformationForm
 
 # Create your views here.
 def guests(request):
@@ -73,8 +74,30 @@ def guest_detail(request, guest_id):
 def add_guest(request):
     stars = range(5)
 
+    personal_information_form = PersonalInformationForm()
+
+    if request.method == "POST":
+        form_data = {
+            'first_name': request.POST['first_name'],
+            'last_name': request.POST['last_name'],
+            'email': request.POST['email'],
+            'mobile': request.POST['mobile'],
+            'dob': request.POST['dob'],
+            'rating': request.POST['rating'],
+            'sms_marketing': request.POST['sms_marketing'],
+            'sms_transactional': request.POST['sms_transactional'],
+        }
+        personal_information_form = PersonalInformationForm(form_data)
+        if personal_information_form.is_valid():
+            personal_information_form.save()
+            print("success")
+        else:
+            print("failure")
+
+
     context = {
         'stars': stars,
+        'personal_information_form': personal_information_form,
     }
     return render(request, 'guests/add_guest.html', context)
 
