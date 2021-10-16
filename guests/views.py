@@ -5,6 +5,8 @@ from django.db.models import Q
 from .models import Guest
 from bookings.models import Booking
 
+from .forms import GuestDetailsForm
+
 # Create your views here.
 def guests(request):
 
@@ -45,8 +47,24 @@ def guest_detail(request, guest_id):
     guest.rating = range(guest.rating)
     guest.unrating = range(guest.unrating)
 
+    form_data = {
+        'first_name': guest.first_name,
+        'last_name': guest.last_name,
+        'email': guest.email,
+        'mobile': guest.mobile,
+        'dob': guest.dob,
+        'rating': guest.rating,
+        'service_notes': guest.service_notes,
+        'kitchen_notes': guest.kitchen_notes,
+        'allergen_notes': guest.allergen_notes,
+        'sms_marketing': guest.sms_marketing,
+        'sms_transactional': guest.sms_transactional,
+    }
+    guest_details_form = GuestDetailsForm(form_data)
+
     context = {
-        'guest': guest
+        'guest': guest,
+        'guest_details_form': guest_details_form,
     }
 
     return render(request, 'guests/guest_detail.html', context)
