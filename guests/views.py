@@ -11,7 +11,7 @@ from .forms import PersonalInformationForm
 # Create your views here.
 def guests(request):
 
-    guests = Guest.objects.all()
+    guests = Guest.objects.filter(deleted=False)
     query = None
 
     if request.GET:
@@ -100,6 +100,13 @@ def add_guest(request):
         'personal_information_form': personal_information_form,
     }
     return render(request, 'guests/add_guest.html', context)
+
+
+def delete_guest(request, guest_id):
+    guest = get_object_or_404(Guest, pk=guest_id)
+    guest.deleted = True
+    guest.save(update_fields=['deleted'])
+    return redirect('guests')
 
 
 def add_booking(request, guest_id):
