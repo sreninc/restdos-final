@@ -2,61 +2,63 @@
 
 {% block extra_title %}Bookings{% endblock %}
 
-{% block body %}
-<div class="flex flex-row flex-wrap">
-    <div class="mb-5 mx-4 flex-1">
-        <label for="filterDate" class="block text-sm font-medium text-gray-700">
-            Date
-        </label>
-        <div class="mt-1 min-w-max">
-            <input type="date" name="filterDate" id="filterDate" value="{{ date }}"
-                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
-                onchange="filterBookings()">
-        </div>
-    </div>
-    <div class="mb-5 mx-4 flex-1">
-        <label for="filterStatus" class="block text-sm font-medium text-gray-700">
-            Status
-        </label>
-        <div class="mt-1 min-w-max">
-            <select id="filterStatus" name="filterStatus"
-                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
-                onchange="filterBookings()">
-                <option value="all" {% if status is "all" %}selected{% endif %}>
-                    All Bookings
-                </option>
-                <option value="completed" {% if status is "completed" %}selected{% endif %}>
-                    Completed
-                </option>
-                <option value="confirmed" {% if status is "confirmed" %}selected{% endif %}>
-                    Confirmed
-                </option>
-                <option value="cancelled" {% if status is "cancelled" %}selected{% endif %}>
-                    Cancelled
-                </option>
-                <option value="denied" {% if status is "denied" %}selected{% endif %}>
-                    Denied
-                </option>
-                <option value="no-show" {% if status is "no-show" %}selected{% endif %}>
-                    No-Show
-                </option>
-                <option value="requested" {% if status is "requested" %}selected{% endif %}>
-                    Requested
-                </option>
-                <option value="seated" {% if status is "seated" %}selected{% endif %}>
-                    Seated
-                </option>
-                <option value="table-ready" {% if status is "table-ready" %}selected{% endif %}>
-                    Table Ready
-                </option>
-                <option value="waitlist" {% if status is "waitlist" %}selected{% endif %}>
-                    Waitlist
-                </option>
-            </select>
-        </div>
+{% block primary-cta %}
+<div class="mb-5 mx-4 flex-1">
+    <label for="filterDate" class="block text-sm font-medium text-gray-700">
+        Date
+    </label>
+    <div class="mt-1 min-w-max">
+        <input type="date" name="filterDate" id="filterDate" value="{{ date }}"
+            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
+            onchange="filterBookings()">
     </div>
 </div>
+{% endblock%}
+{% block secondary-cta %}
+<div class="mb-5 mx-4 flex-1">
+    <label for="filterStatus" class="block text-sm font-medium text-gray-700">
+        Status
+    </label>
+    <div class="mt-1 min-w-max">
+        <select id="filterStatus" name="filterStatus"
+            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
+            onchange="filterBookings()">
+            <option value="all" {% if status is "all" %}selected{% endif %}>
+                All Bookings
+            </option>
+            <option value="completed" {% if status is "completed" %}selected{% endif %}>
+                Completed
+            </option>
+            <option value="confirmed" {% if status is "confirmed" %}selected{% endif %}>
+                Confirmed
+            </option>
+            <option value="cancelled" {% if status is "cancelled" %}selected{% endif %}>
+                Cancelled
+            </option>
+            <option value="denied" {% if status is "denied" %}selected{% endif %}>
+                Denied
+            </option>
+            <option value="no-show" {% if status is "no-show" %}selected{% endif %}>
+                No-Show
+            </option>
+            <option value="requested" {% if status is "requested" %}selected{% endif %}>
+                Requested
+            </option>
+            <option value="seated" {% if status is "seated" %}selected{% endif %}>
+                Seated
+            </option>
+            <option value="table-ready" {% if status is "table-ready" %}selected{% endif %}>
+                Table Ready
+            </option>
+            <option value="waitlist" {% if status is "waitlist" %}selected{% endif %}>
+                Waitlist
+            </option>
+        </select>
+    </div>
+</div>
+{% endblock %}
 
+{% block body %}
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col hidden lg:block">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
