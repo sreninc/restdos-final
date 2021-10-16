@@ -89,8 +89,8 @@ def add_guest(request):
         }
         personal_information_form = PersonalInformationForm(form_data)
         if personal_information_form.is_valid():
-            personal_information_form.save()
-            print("success")
+            form = personal_information_form.save()
+            return redirect('guest_detail', guest_id=form.id)
         else:
             print("failure")
 
