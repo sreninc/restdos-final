@@ -52,6 +52,15 @@ def guest_detail(request, guest_id):
     return render(request, 'guests/guest_detail.html', context)
 
 
+def add_guest(request):
+    stars = range(5)
+
+    context = {
+        'stars': stars,
+    }
+    return render(request, 'guests/add_guest.html', context)
+
+
 def add_booking(request, guest_id):
 
     guest = get_object_or_404(Guest, pk=guest_id)
