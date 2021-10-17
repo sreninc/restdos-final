@@ -43,34 +43,64 @@ def guests(request):
 
 def guest_detail(request, guest_id):
 
-    personal_information_form = PersonalInformationForm()
-
     guest = get_object_or_404(Guest, pk=guest_id)
-    guest.unrating = 5 - guest.rating
-    guest.rating = range(guest.rating)
-    guest.unrating = range(guest.unrating)
 
-    form_data = {
-        'first_name': guest.first_name,
-        'last_name': guest.last_name,
-        'email': guest.email,
-        'mobile': guest.mobile,
-        'dob': guest.dob,
-        'rating': guest.rating,
-        'service_notes': guest.service_notes,
-        'kitchen_notes': guest.kitchen_notes,
-        'allergen_notes': guest.allergen_notes,
-        'sms_marketing': guest.sms_marketing,
-        'sms_transactional': guest.sms_transactional,
-    }
-    guest_details_form = GuestDetailsForm(form_data)
+
+    if request.method == 'POST':
+        sms_marketing = False
+        sms_transactional = False
+
+        if 'sms_marketing' in request.POST:
+            sms_marketing = True
+
+        if 'sms_transactional' in request.POST:
+            sms_transactional = True
+
+        if 'first_name' in request.POST:
+            form_data = {
+                'first_name': request.POST['first_name'],
+                'last_name': request.POST['last_name'],
+                'email': request.POST['email'],
+                'mobile': request.POST['mobile'],
+                'dob': request.POST['dob'],
+                'rating': request.POST['rating'],
+                'sms_marketing': sms_marketing,
+                'sms_transactional': sms_transactional,
+            }
+        else:
+            form_data = {
+                'service_notes': request.POST['service_notes'],
+                'kitchen_notes': request.POST['kitchen_notes'],
+                'allergen_notes': request.POST['allergen_notes'],
+            }
+
+        personal_information_form = PersonalInformationForm(form_data, instance=guest)
+        if personal_information_form.is_valid():
+            form = personal_information_form.save()
+            return redirect('guest_detail', guest_id=form.id)
+        else:
+            print("failure")
+    else:
+        form_data = {
+            'first_name': guest.first_name,
+            'last_name': guest.last_name,
+            'email': guest.email,
+            'mobile': guest.mobile,
+            'dob': guest.dob,
+            'rating': guest.rating,
+            'service_notes': guest.service_notes,
+            'kitchen_notes': guest.kitchen_notes,
+            'allergen_notes': guest.allergen_notes,
+            'sms_marketing': guest.sms_marketing,
+            'sms_transactional': guest.sms_transactional,
+        }
+        personal_information_form = PersonalInformationForm(form_data)
+
 
     context = {
         'guest': guest,
-        'guest_details_form': guest_details_form,
         'personal_information_form': personal_information_form,
     }
-
     return render(request, 'guests/guest_detail.html', context)
 
 
@@ -79,7 +109,7 @@ def add_guest(request):
 
     personal_information_form = PersonalInformationForm()
 
-    if request.method == "POST":
+    if request.method == 'POST':
         sms_marketing = False
         sms_transactional = False
 
@@ -112,11 +142,6 @@ def add_guest(request):
         'personal_information_form': personal_information_form,
     }
     return render(request, 'guests/add_guest.html', context)
-
-
-def update_guest(request, guest_id):
-    guest = get_object_or_404(Guest, pk=guest_id)
-    return redirect('guest_detail', guest_id)
 
 
 def delete_guest(request, guest_id):
