@@ -159,18 +159,3 @@ def delete_guest(request, guest_id):
     guest.deleted = True
     guest.save(update_fields=['deleted'])
     return redirect('guests')
-
-
-def add_booking(request, guest_id):
-
-    guest = get_object_or_404(Guest, pk=guest_id)
-    guest.unrating = 5 - guest.rating
-    guest.rating = range(guest.rating)
-    guest.unrating = range(guest.unrating)
-
-    context = {
-        'guest': guest
-    }
-
-    return render(request, 'guests/add_booking.html', context)
-
