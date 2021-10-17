@@ -7,7 +7,9 @@
             "last_name": "O'Sullivan",
             "mobile": "0896023853",
             "email": "sreninc@gmail.com",
-            "rating": 1
+            "rating": 1,
+            "guest_since": "2020-01-01",
+            "last_updated": "2020-01-01"
         }
     },
     {
@@ -18,7 +20,9 @@
             "last_name": "Brassfield",
             "mobile": "0894147283",
             "email": "brassfield@gmail.com",
-            "rating": 5
+            "rating": 5,
+            "guest_since": "2020-01-01",
+            "last_updated": "2020-01-01"
         }
     }
 ]
