@@ -5,7 +5,7 @@ from django.db.models import Q
 from .models import Guest
 from bookings.models import Booking
 
-from .forms import GuestDetailsForm
+from .forms import NotesForm
 from .forms import PersonalInformationForm
 
 # Create your views here.
@@ -67,19 +67,22 @@ def guest_detail(request, guest_id):
                 'sms_marketing': sms_marketing,
                 'sms_transactional': sms_transactional,
             }
+            personal_information_form = PersonalInformationForm(form_data, instance=guest)
+            if personal_information_form.is_valid():
+                form = personal_information_form.save()
+                return redirect('guest_detail', guest_id=form.id)
+            else:
+                print("failure")
         else:
             form_data = {
                 'service_notes': request.POST['service_notes'],
                 'kitchen_notes': request.POST['kitchen_notes'],
                 'allergen_notes': request.POST['allergen_notes'],
             }
-
-        personal_information_form = PersonalInformationForm(form_data, instance=guest)
-        if personal_information_form.is_valid():
-            form = personal_information_form.save()
-            return redirect('guest_detail', guest_id=form.id)
-        else:
-            print("failure")
+            notes_form = NotesForm(form_data, instance=guest)
+            if notes_form.is_valid():
+                form = notes_form.save()
+                return redirect('guest_detail', guest_id=form.id)
     else:
         form_data = {
             'first_name': guest.first_name,
@@ -95,11 +98,18 @@ def guest_detail(request, guest_id):
             'sms_transactional': guest.sms_transactional,
         }
         personal_information_form = PersonalInformationForm(form_data)
+        notes_data = {
+            'service_notes': guest.service_notes, 
+            'kitchen_notes': guest.kitchen_notes, 
+            'allergen_notes': guest.allergen_notes,
+        }
+        notes_form = NotesForm(notes_data)
 
 
     context = {
         'guest': guest,
         'personal_information_form': personal_information_form,
+        'notes_form': notes_form,
     }
     return render(request, 'guests/guest_detail.html', context)
 

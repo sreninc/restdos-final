@@ -90,46 +90,7 @@
                 {% csrf_token %}
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                        <div>
-                            <label for="notes_service" class="block text-sm font-medium text-gray-700">
-                                Service Notes
-                            </label>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Such as preferred seating, wine choice etc.
-                            </p>
-                            <div class="mt-1">
-                                <textarea id="notes_service" name="notes_service" rows="5"
-                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 p-1 block w-full sm:text-sm border border-gray-300 rounded-md resize-none"></textarea>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="notes_kitchen" class="block text-sm font-medium text-gray-700">
-                                Kitchen Notes
-                            </label>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Such as standard requests like meat temperature etc.
-                            </p>
-                            <div class="mt-1">
-                                <textarea id="notes_kitchen" name="notes_kitchen" rows="5"
-                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 p-1 block w-full sm:text-sm border border-gray-300 rounded-md resize-none">
-
-                                </textarea>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="notes_allergies" class="block text-sm font-medium text-gray-700">
-                                Allergies & Intollerances
-                            </label>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Important information critical to the guests health.
-                            </p>
-                            <div class="mt-1">
-                                <textarea id="notes_allergies" name="notes_allergies" rows="5"
-                                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 p-1 block w-full sm:text-sm border border-gray-300 rounded-md resize-none">
-
-                                </textarea>
-                            </div>
-                        </div>
+                        {{ notes_form|crispy }}
                     </div>
                     <div class="px-4 py-3 bg-indigo-50 text-right sm:px-6">
                         <button type="submit"
