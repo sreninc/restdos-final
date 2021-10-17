@@ -43,6 +43,8 @@ def guests(request):
 
 def guest_detail(request, guest_id):
 
+    personal_information_form = PersonalInformationForm()
+
     guest = get_object_or_404(Guest, pk=guest_id)
     guest.unrating = 5 - guest.rating
     guest.rating = range(guest.rating)
@@ -66,6 +68,7 @@ def guest_detail(request, guest_id):
     context = {
         'guest': guest,
         'guest_details_form': guest_details_form,
+        'personal_information_form': personal_information_form,
     }
 
     return render(request, 'guests/guest_detail.html', context)
@@ -109,6 +112,11 @@ def add_guest(request):
         'personal_information_form': personal_information_form,
     }
     return render(request, 'guests/add_guest.html', context)
+
+
+def update_guest(request, guest_id):
+    guest = get_object_or_404(Guest, pk=guest_id)
+    return redirect('guest_detail', guest_id)
 
 
 def delete_guest(request, guest_id):
