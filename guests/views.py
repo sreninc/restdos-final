@@ -77,6 +77,15 @@ def add_guest(request):
     personal_information_form = PersonalInformationForm()
 
     if request.method == "POST":
+        sms_marketing = False
+        sms_transactional = False
+
+        if 'sms_marketing' in request.POST:
+            sms_marketing = True
+
+        if 'sms_transactional' in request.POST:
+            sms_transactional = True
+
         form_data = {
             'first_name': request.POST['first_name'],
             'last_name': request.POST['last_name'],
@@ -84,8 +93,8 @@ def add_guest(request):
             'mobile': request.POST['mobile'],
             'dob': request.POST['dob'],
             'rating': request.POST['rating'],
-            'sms_marketing': request.POST['sms_marketing'],
-            'sms_transactional': request.POST['sms_transactional'],
+            'sms_marketing': sms_marketing,
+            'sms_transactional': sms_transactional,
         }
         personal_information_form = PersonalInformationForm(form_data)
         if personal_information_form.is_valid():

@@ -5,6 +5,10 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class GuestDetailsForm(forms.ModelForm):
     class Meta:
         model = Guest
@@ -40,24 +44,20 @@ class PersonalInformationForm(forms.ModelForm):
     class Meta:
         model = Guest
         fields = ('first_name', 'last_name', 'email', 'mobile', 'dob', 'rating',  'sms_marketing', 'sms_transactional',)
+        widgets = {
+            'dob': DateInput()
+        }
 
 
     def __init__(self, *args, **kwargs):
-
         super().__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-        self.helper.form_id = 'add-guest'
-        self.helper.form_class = 'blueForms'
-        self.helper.form_method = 'post'
-        self.helper.form_action = 'add_guest'
-        self.helper.add_input(Submit('submit', 'Submit'))
 
         placeholders = {
             'first_name': 'Marilyn',
             'last_name': 'Monroe',
             'email': 'marilyn.monroe@email.com',
             'mobile': '0891234567',
-            'dob': '01/01/1990', 
+            'dob': '', 
             'service_notes': 'Service Notes', 
             'kitchen_notes': 'Kitchen Notes', 
             'allergen_notes': 'Allergen & Intollerances Notes', 
