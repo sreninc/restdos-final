@@ -116,3 +116,7 @@ def signup_success(request):
 
 def terms(request):
     return render(request, 'website/terms_and_conditions.html')
+
+
+def privacy(request):
+    return render(request, 'website/privacy.html')

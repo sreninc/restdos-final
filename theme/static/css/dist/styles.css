@@ -1479,6 +1479,10 @@ select {
   bottom: 3rem;
 }
 
+.isolate {
+  isolation: isolate;
+}
+
 .z-40 {
   z-index: 40;
 }
