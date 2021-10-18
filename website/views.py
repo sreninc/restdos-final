@@ -112,3 +112,7 @@ def signup(request, signup_plan, signup_monthly):
 
 def signup_success(request):
     return render(request, 'website/new_user.html') 
+
+
+def terms(request):
+    return render(request, 'website/terms_and_conditions.html')
