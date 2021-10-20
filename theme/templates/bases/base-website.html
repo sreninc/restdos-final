@@ -48,7 +48,7 @@
               <div id="navMenuSolutions" class="hidden absolute z-10 -ml-4 mt-3 transform w-screen max-w-md lg:max-w-2xl lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
                 <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                   <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                    <a href="{% url 'guest_management' %}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                       <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/user -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,7 +65,7 @@
                       </div>
                     </a>
   
-                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                    <a href="{% url 'marketing' %}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                       <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/chat -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,7 +82,7 @@
                       </div>
                     </a>
   
-                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                    <a href="{% url 'automated_messaging' %}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                       <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/chat-alt-2 -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,7 +99,7 @@
                       </div>
                     </a>
   
-                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                    <a href="{% url 'booking_management' %}" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                       <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white sm:h-12 sm:w-12">
                         <!-- Heroicon name: outline/book-open -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -123,7 +123,7 @@
             <a href="{% url 'pricing' %}" class="text-base font-medium text-gray-500 hover:text-gray-900">
               Pricing
             </a>
-            <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">
+            <a href="{% url 'blog' %}" class="text-base font-medium text-gray-500 hover:text-gray-900">
               Blog
             </a>
             <a href="{% url 'contact' %}" class="text-base font-medium text-gray-500 hover:text-gray-900">
@@ -169,7 +169,7 @@
               </div>
               <div class="mt-6">
                 <nav class="grid grid-cols-1 gap-7">
-                  <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                  <a href="{% url 'guest_management' %}" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                       <!-- Heroicon name: outline/inbox -->
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -177,11 +177,11 @@
                       </svg>
                     </div>
                     <div class="ml-4 text-base font-medium text-gray-900">
-                      Inbox
+                      Guest Management
                     </div>
                   </a>
   
-                  <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                  <a href="{% url 'marketing' %}" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                       <!-- Heroicon name: outline/annotation -->
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -189,11 +189,11 @@
                       </svg>
                     </div>
                     <div class="ml-4 text-base font-medium text-gray-900">
-                      Messaging
+                      Marketing
                     </div>
                   </a>
   
-                  <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                  <a href="{% url 'automated_messaging' %}" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                       <!-- Heroicon name: outline/chat-alt-2 -->
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -201,11 +201,11 @@
                       </svg>
                     </div>
                     <div class="ml-4 text-base font-medium text-gray-900">
-                      Live Chat
+                      Automated Messaging
                     </div>
                   </a>
   
-                  <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
+                  <a href="{% url 'booking_management' %}" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-gradient-to-r from-blue-500 to-blue-600 text-white">
                       <!-- Heroicon name: outline/question-mark-circle -->
                       <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -213,7 +213,7 @@
                       </svg>
                     </div>
                     <div class="ml-4 text-base font-medium text-gray-900">
-                      Knowledge Base
+                      Booking Management
                     </div>
                   </a>
                 </nav>
@@ -224,11 +224,11 @@
                 <a href="{% url 'pricing' %}" class="text-base font-medium text-gray-900 hover:text-gray-700">
                   Pricing
                 </a>
-                <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                  Partners
+                <a href="{% url 'blog' %}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                  Blog
                 </a>
-                <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                  Company
+                <a href="{% url 'contact' %}" class="text-base font-medium text-gray-900 hover:text-gray-700">
+                  Contact
                 </a>
               </div>
               <div class="mt-6">
@@ -262,7 +262,7 @@
     </h2>
     <div class="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
       <a href="#" class="flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700">
-        Learn more
+        Live Demo
       </a>
       <a href="{% url 'pricing' %}" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100">
         Get started
@@ -286,25 +286,25 @@
               </h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'guest_management' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Guest Management
                   </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'marketing' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Marketing
                   </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'automated_messaging' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Automated Messaging
                   </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'booking_management' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Booking Management
                   </a>
                 </li>
@@ -347,14 +347,9 @@
                 Company
               </h3>
               <ul role="list" class="mt-4 space-y-4">
-                <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-                    About
-                  </a>
-                </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-500 hover:text-gray-900">
+                  <a href="{% url 'blog' %}" class="text-base text-gray-500 hover:text-gray-900">
                     Blog
                   </a>
                 </li>
