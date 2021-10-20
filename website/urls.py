@@ -10,4 +10,5 @@ urlpatterns = [
     path('signup/success/', views.signup_success, name='signup_success'),
     path('terms/', views.terms, name='terms'),
     path('privacy/', views.privacy, name='privacy'),
+    path('blog/', views.blog, name='blog'),
 ]

@@ -68,7 +68,7 @@ def signup(request, signup_plan, signup_monthly):
         signup_form = SignupForm(form_data)
         if signup_form.is_valid():
             signup_form.save()
-            return redirect(reverse('signup_success'))
+            return redirect(reverse('dashboard'))
         else:
             print(signup_form.errors)
     else:
@@ -120,3 +120,7 @@ def terms(request):
 
 def privacy(request):
     return render(request, 'website/privacy.html')
+
+
+def blog(request):
+    return render(request, 'website/blog.html')
