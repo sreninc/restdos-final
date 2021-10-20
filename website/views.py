@@ -124,3 +124,19 @@ def privacy(request):
 
 def blog(request):
     return render(request, 'website/blog.html')
+
+
+def guest_management(request):
+    return render(request, 'website/guest_management.html')
+
+
+def marketing(request):
+    return render(request, 'website/marketing.html')
+
+
+def automated_messaging(request):
+    return render(request, 'website/automated_messaging.html')
+
+
+def booking_management(request):
+    return render(request, 'website/booking_management.html')
