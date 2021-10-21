@@ -13,8 +13,9 @@ class TimeInput(forms.TimeInput):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ('date', 'time', 'people', 'rating',)
+        fields = ('guest', 'date', 'time', 'people', 'rating',)
         widgets = {
             'date': DateInput(),
             'time': TimeInput(),
+            'guest': forms.HiddenInput(),
         }

@@ -32,7 +32,7 @@ def add_booking(request, guest_id):
 
     if request.method == 'POST':
         form_data = {
-            'guest_id': guest_id,
+            'guest': guest_id,
             'date': request.POST['date'],
             'time': request.POST['time'],
             'people': request.POST['people'],
