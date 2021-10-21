@@ -9,17 +9,17 @@ from .forms import BookingForm
 # Create your views here.
 def bookings(request):
 
-    bookings = Booking.objects.filter(rating=5)
+    bookings = Booking.objects.all()
     for booking in bookings:
         booking.unrating = 5 - booking.rating
         booking.rating = range(booking.rating)
         booking.unrating = range(booking.unrating)
+        booking.status = booking.get_status_display()
 
     status = 'all'
 
     context = {
         'status': status,
-        'rating': rating,
         'bookings': bookings,
     }
 
