@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
+
 from guests.models import Guest
 from .models import Booking
 
@@ -8,14 +9,20 @@ from .forms import BookingForm
 # Create your views here.
 def bookings(request):
 
+    bookings = Booking.objects.filter(rating=5)
+    for booking in bookings:
+        booking.unrating = 5 - booking.rating
+        booking.rating = range(booking.rating)
+        booking.unrating = range(booking.unrating)
 
     status = 'all'
-    rating = range(5)
 
     context = {
         'status': status,
         'rating': rating,
+        'bookings': bookings,
     }
+
     return render(request, 'bookings/bookings.html', context)
 
 
