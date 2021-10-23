@@ -9,7 +9,7 @@ from .forms import BookingForm
 # Create your views here.
 def bookings(request):
 
-    bookings = Booking.objects.all()
+    bookings = Booking.objects.filter(deleted=False)
     for booking in bookings:
         booking.unrating = 5 - booking.rating
         booking.rating = range(booking.rating)
@@ -93,3 +93,10 @@ def edit_booking(request, booking_id):
         'booking_id': booking_id,
     }
     return render(request, template, context)
+
+
+def delete_booking(request, booking_id):
+    booking = get_object_or_404(Booking, pk=booking_id)
+    booking.deleted = True
+    booking.save(update_fields=['deleted'])
+    return redirect('bookings')

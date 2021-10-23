@@ -25,3 +25,4 @@ class Booking(models.Model):
         choices=Status.choices,
         default=Status.REQUESTED,
     )
+    deleted = models.BooleanField(default=False)
