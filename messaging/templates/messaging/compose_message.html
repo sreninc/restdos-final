@@ -34,11 +34,11 @@
               Message
             </label>
             <div class="mt-1">
-              <textarea id="sms-content" name="sms-content" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+              <textarea id="sms-content" name="sms-content" rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
             </div>
             <p class="mt-2 text-sm text-gray-500">The message is <span id="charUsed">0</span> / <span id="charTotal">160</span> characters and will send <span id="smsSend">1</span> sms to each recipient.</p>
 
-            <p class="mt-2 text-sm text-red-500" id="sms-warning">Your message is too long. The maximum characters allowed is 459, please reduce the content of your message.</p>
+            <p class="mt-2 text-sm text-red-500 hidden" id="sms-warning">Your message is too long. The maximum characters allowed is 459, please reduce the content of your message.</p>
           </div>
 
           <div class="flex justify-end mt-6">
@@ -58,16 +58,17 @@
 
 {% block postloadjs %}
   <script>
-    document.getElementById('sms-warning').classList.add('hidden');
-    document.getElementById('sms-preview').setAttribute('disabled', '');
-    document.getElementById('sms-preview').classList.add('bg-indigo-600');
-    document.getElementById('sms-preview').classList.remove('bg-indigo-300');
+    
     charUsed = document.getElementById('charUsed');
     charTotal = document.getElementById('charTotal');
     smsSend = document.getElementById('smsSend');
     document.getElementById('sms-content').addEventListener('keyup', function (e) {
       chars = this.value.length;
       charUsed.innerHTML = chars;
+      document.getElementById('sms-warning').classList.add('hidden');
+      document.getElementById('sms-preview').setAttribute('disabled', '');
+      document.getElementById('sms-preview').classList.add('bg-indigo-600');
+      document.getElementById('sms-preview').classList.remove('bg-indigo-300');
 
       if (chars <= 160) {
         charTotal.innerHTML = 160;
