@@ -98,6 +98,7 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SMS_BACKEND = 'sms.backends.console.SmsBackend' #required for django-sms
 
 TAILWIND_APP_NAME = 'theme' # required for django-tailwind
 
