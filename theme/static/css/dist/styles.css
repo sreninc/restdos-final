@@ -2337,6 +2337,11 @@ select {
   background-color: rgba(129, 140, 248, var(--tw-bg-opacity));
 }
 
+.bg-indigo-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(165, 180, 252, var(--tw-bg-opacity));
+}
+
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
   background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
@@ -2839,6 +2844,11 @@ select {
 .text-yellow-50 {
   --tw-text-opacity: 1;
   color: rgba(255, 251, 235, var(--tw-text-opacity));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 
 .text-indigo-200 {
