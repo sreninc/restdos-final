@@ -21,6 +21,7 @@ def bookings(request):
     context = {
         'status': status,
         'bookings': bookings,
+        'page': 'bookings',
     }
 
     return render(request, 'bookings/bookings.html', context)
@@ -49,6 +50,7 @@ def add_booking(request, guest_id):
     context = {
         'booking_form': booking_form,
         'guest_id': guest_id,
+        'page': 'bookings',
     }
 
     return render(request, 'bookings/add_booking.html', context)

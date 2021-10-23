@@ -29,5 +29,6 @@ def dashboard(request):
 
     context = {
         'stats': stats,
+        'page': 'dashboard',
     }
     return render(request, 'reports/dashboard.html', context)

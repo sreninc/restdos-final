@@ -36,6 +36,7 @@ def guests(request):
     context = {
         'guests': guests,
         'search_term': query,
+        'page': 'guests',
     }
 
     return render(request, 'guests/guests.html', context)
@@ -110,6 +111,7 @@ def guest_detail(request, guest_id):
         'guest': guest,
         'personal_information_form': personal_information_form,
         'notes_form': notes_form,
+        'page': 'guests',
     }
     return render(request, 'guests/guest_detail.html', context)
 
@@ -150,6 +152,7 @@ def add_guest(request):
     context = {
         'stars': stars,
         'personal_information_form': personal_information_form,
+        'page': 'guests',
     }
     return render(request, 'guests/add_guest.html', context)
 
