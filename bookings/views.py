@@ -54,3 +54,42 @@ def add_booking(request, guest_id):
     }
 
     return render(request, 'bookings/add_booking.html', context)
+
+
+def edit_booking(request, booking_id):
+
+    booking = get_object_or_404(Booking, pk=booking_id)
+
+    booking_form = BookingForm()
+
+    form_data = {
+        'guest': booking.guest,
+        'date': booking.date,
+        'time': booking.time,
+        'people': booking.people,
+        'rating': booking.rating,
+    }
+
+    booking_form = BookingForm(form_data)
+
+    if request.method == 'POST':
+        form_data = {
+            'guest': request.POST['guest'],
+            'date': request.POST['date'],
+            'time': request.POST['time'],
+            'people': request.POST['people'],
+            'rating': request.POST['rating'],
+        }
+        booking_form = BookingForm(form_data, instance=booking)
+        if booking_form.is_valid():
+            print('success')
+            form = booking_form.save()
+        else:
+            print('failure')
+
+    template = 'bookings/edit_booking.html'
+    context = {
+        'booking_form': booking_form,
+        'booking_id': booking_id,
+    }
+    return render(request, template, context)
