@@ -34,16 +34,18 @@
               Message
             </label>
             <div class="mt-1">
-              <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+              <textarea id="sms-content" name="sms-content" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
             </div>
-            <p class="mt-2 text-sm text-gray-500">The message is 0 / 160 characters and will send 1 sms to each recipient.</p>
+            <p class="mt-2 text-sm text-gray-500">The message is <span id="charUsed">0</span> / <span id="charTotal">160</span> characters and will send <span id="smsSend">1</span> sms to each recipient.</p>
+
+            <p class="mt-2 text-sm text-red-500" id="sms-warning">Your message is too long. The maximum characters allowed is 459, please reduce the content of your message.</p>
           </div>
 
           <div class="flex justify-end mt-6">
             <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Clear
             </button>
-            <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <button type="submit" id="sms-preview" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Preview
             </button>
 
@@ -52,4 +54,38 @@
     </div>
 </form>
 
+{% endblock %}
+
+{% block postloadjs %}
+  <script>
+    document.getElementById('sms-warning').classList.add('hidden');
+    document.getElementById('sms-preview').setAttribute('disabled', '');
+    document.getElementById('sms-preview').classList.add('bg-indigo-600');
+    document.getElementById('sms-preview').classList.remove('bg-indigo-300');
+    charUsed = document.getElementById('charUsed');
+    charTotal = document.getElementById('charTotal');
+    smsSend = document.getElementById('smsSend');
+    document.getElementById('sms-content').addEventListener('keyup', function (e) {
+      chars = this.value.length;
+      charUsed.innerHTML = chars;
+
+      if (chars <= 160) {
+        charTotal.innerHTML = 160;
+        smsSend.innerHTML = 1;
+      } else if (chars <= 306) {
+        charTotal.innerHTML = 306;
+        smsSend.innerHTML = 2;
+      } else if (chars <= 459) {
+        charTotal.innerHTML = 459;
+        smsSend.innerHTML = 3;
+      } else {
+        charTotal.innerHTML = 459;
+        smsSend.innerHTML = 3;
+        document.getElementById('sms-preview').setAttribute('disabled', 'disabled');
+        document.getElementById('sms-warning').classList.remove('hidden');
+        document.getElementById('sms-preview').classList.remove('bg-indigo-600');
+        document.getElementById('sms-preview').classList.add('bg-indigo-300');
+      }
+    });
+  </script>
 {% endblock %}
