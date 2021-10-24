@@ -18,15 +18,18 @@ def guests(request):
         if 'search' in request.GET:
             query = request.GET['search']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.info(request, "You didn't enter any search criteria!")
                 return redirect(reverse('guests'))
 
             queries = Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(mobile__icontains=query) | Q(email__icontains=query)
             guests = guests.filter(queries)
-            messages.success(request, f'Searched for "{query}" successfully.')
 
-
-    
+            if guests.count() == 1:
+                return redirect('guest_detail', guest_id=guests.first().id)
+            elif guests.count() == 0:
+                messages.warning(request, f'Your search query for "{query}" returned no results.')
+            else:
+                messages.success(request, f'Search for "{query}" returned "{guests.count()}" results.')
 
     for guest in guests:
         guest.unrating = 5 - guest.rating
