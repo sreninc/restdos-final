@@ -38,6 +38,8 @@ def add_booking(request, guest_id):
             'time': request.POST['time'],
             'people': request.POST['people'],
             'rating': request.POST['rating'],
+            'status': request.POST['status'],
+            'booking_value': request.POST['booking_value'],
         }
         booking_form = BookingForm(form_data)
         if booking_form.is_valid():
@@ -68,6 +70,8 @@ def edit_booking(request, booking_id):
         'time': booking.time,
         'people': booking.people,
         'rating': booking.rating,
+        'status': booking.status,
+        'booking_value': booking.booking_value,
     }
 
     booking_form = BookingForm(form_data)
@@ -79,6 +83,8 @@ def edit_booking(request, booking_id):
             'time': request.POST['time'],
             'people': request.POST['people'],
             'rating': request.POST['rating'],
+            'status': request.POST['status'],
+            'booking_value': request.POST['booking_value'],
         }
         booking_form = BookingForm(form_data, instance=booking)
         if booking_form.is_valid():

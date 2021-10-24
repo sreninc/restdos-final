@@ -26,3 +26,4 @@ class Booking(models.Model):
         default=Status.REQUESTED,
     )
     deleted = models.BooleanField(default=False)
+    booking_value = models.IntegerField(default=0, null=False, blank=False)

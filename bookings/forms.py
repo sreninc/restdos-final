@@ -13,7 +13,7 @@ class TimeInput(forms.TimeInput):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ('guest', 'date', 'time', 'people', 'rating',)
+        fields = ('guest', 'date', 'time', 'people', 'rating', 'status', 'booking_value')
         widgets = {
             'date': DateInput(),
             'time': TimeInput(),
