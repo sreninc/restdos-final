@@ -11,16 +11,24 @@ def dashboard(request):
 
     guests = Guest.objects.all()
     bookings = Booking.objects.all()
-    print(bookings)
-    print(type(bookings.first().booking_value))
-    print(bookings.filter(status='CON'))
 
-    total_guests = guests.count()
-    total_bookings = bookings.count()
-    total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
-    no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
-    completed_percentage = (bookings.filter(status='COM').count() / bookings.count()) * 100
-    avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.count()
+    if guests:
+        total_guests = guests.count()
+    else:
+        total_guests = 0
+
+    if bookings:
+        total_bookings = bookings.count()
+        total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
+        no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
+        completed_percentage = (bookings.filter(status='COM').count() / bookings.count()) * 100
+        avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.count()
+    else:
+        total_bookings = 0
+        total_sales = 0
+        no_show_percentage = 0
+        completed_percentage = 0
+        avg_booking_value = 0
 
     stats = {
         'total_guests': total_guests,
