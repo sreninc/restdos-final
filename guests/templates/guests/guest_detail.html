@@ -132,7 +132,7 @@
                                     Guest Age
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
-                                    0
+                                    {{ stats.guest_age }}
                                 </dd>
                             </div>
 
@@ -141,7 +141,7 @@
                                     Total Bookings
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
-                                    0
+                                    {{ stats.total_bookings }}
                                 </dd>
                             </div>
 
@@ -150,7 +150,7 @@
                                     Total Sales
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
-                                    €0
+                                    €{{ stats.total_sales|floatformat }}
                                 </dd>
                             </div>
                         </dl>
@@ -160,7 +160,7 @@
                                     % NO-SHOW BOOKINGS
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
-                                    0%
+                                    {{ stats.no_show_percentage|floatformat }}%
                                 </dd>
                             </div>
 
@@ -169,7 +169,7 @@
                                     % BOOKINGS COMPLETED
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
-                                    0%
+                                    {{ stats.completed_percentage|floatformat }}%
                                 </dd>
                             </div>
 
@@ -178,7 +178,7 @@
                                     AVERAGE BOOKING VALUE
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
-                                    €0
+                                    €{{ stats.avg_booking_value|floatformat }}
                                 </dd>
                             </div>
                         </dl>

@@ -9,6 +9,7 @@ class GuestAdmin(admin.ModelAdmin):
         'email',
         'mobile',
         'rating',
+        'guest_since',
     )
 
     ordering = ('first_name', 'last_name')

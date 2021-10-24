@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Sum
+
+from datetime import datetime
 
 from .models import Guest
 from bookings.models import Booking
@@ -48,6 +50,34 @@ def guests(request):
 def guest_detail(request, guest_id):
 
     guest = get_object_or_404(Guest, pk=guest_id)
+    bookings = Booking.objects.filter(guest=guest_id)
+
+    total_bookings = bookings.count()
+    total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
+    no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
+    completed_percentage = (bookings.filter(status='COM').count() / bookings.count()) * 100
+    avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.count()
+
+    guest_age = (datetime.now() - datetime.combine(guest.guest_since, datetime.min.time())).days
+    # Calculating years
+    years = guest_age // 365
+
+    # Calculating months
+    months = (guest_age - years * 365) // 30
+
+    # Calculating days
+    days = (guest_age - years * 365 - months*30)
+
+    guest_age = str(years) + "Y " + str(months) + "M " + str(days) + "D"
+
+    stats = {
+        'guest_age': guest_age,
+        'total_bookings': total_bookings,
+        'total_sales': total_sales,
+        'no_show_percentage': no_show_percentage,
+        'completed_percentage': completed_percentage,
+        'avg_booking_value': avg_booking_value,
+    }
 
 
     if request.method == 'POST':
@@ -114,6 +144,7 @@ def guest_detail(request, guest_id):
         'guest': guest,
         'personal_information_form': personal_information_form,
         'notes_form': notes_form,
+        'stats': stats,
         'page': 'guests',
     }
     return render(request, 'guests/guest_detail.html', context)
