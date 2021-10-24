@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-
+from datetime import datetime
 
 from guests.models import Guest
 from .models import Booking
@@ -7,21 +7,25 @@ from .models import Booking
 from .forms import BookingForm
 
 # Create your views here.
-def bookings(request):
+def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 
-    bookings = Booking.objects.filter(deleted=False)
+    if status == 'all':
+        bookings = Booking.objects.filter(deleted=False, date=date)
+    else:
+        bookings = Booking.objects.filter(deleted=False, date=date, status=status)
+
     for booking in bookings:
         booking.unrating = 5 - booking.rating
         booking.rating = range(booking.rating)
         booking.unrating = range(booking.unrating)
         booking.status = booking.get_status_display()
 
-    status = 'all'
-
     context = {
         'status': status,
         'bookings': bookings,
         'page': 'bookings',
+        'date': date,
+        'status': status,
     }
 
     return render(request, 'bookings/bookings.html', context)

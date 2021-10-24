@@ -20,37 +20,37 @@
         Status
     </label>
     <div class="mt-1 min-w-max">
-        <select id="filterStatus" name="filterStatus"
+        <select id="filterStatus" name="filterStatus" onChange="window.location.href=this.value"
             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
             onchange="filterBookings()">
-            <option value="all" {% if status is "all" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='all' date=date %}" {% if status is "all" %}selected{% endif %}>
                 All Bookings
             </option>
-            <option value="completed" {% if status is "completed" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='COM' date=date %}" {% if status == 'COM' %}selected{% endif %}>
                 Completed
             </option>
-            <option value="confirmed" {% if status is "confirmed" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='CON' date=date %}" {% if status == 'CON' %}selected{% endif %}>
                 Confirmed
             </option>
-            <option value="cancelled" {% if status is "cancelled" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='CAN' date=date %}" {% if status == 'CAN' %}selected{% endif %}>
                 Cancelled
             </option>
-            <option value="denied" {% if status is "denied" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='DEN' date=date %}" {% if status == 'DEN' %}selected{% endif %}>
                 Denied
             </option>
-            <option value="no-show" {% if status is "no-show" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='NOS' date=date %}" {% if status == 'NOS' %}selected{% endif %}>
                 No-Show
             </option>
-            <option value="requested" {% if status is "requested" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='REQ' date=date %}" {% if status == 'REQ' %}selected{% endif %}>
                 Requested
             </option>
-            <option value="seated" {% if status is "seated" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='SEA' date=date %}" {% if status == 'SEA' %}selected{% endif %}>
                 Seated
             </option>
-            <option value="table-ready" {% if status is "table-ready" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='TAB' date=date %}" {% if status == 'TAB' %}selected{% endif %}>
                 Table Ready
             </option>
-            <option value="waitlist" {% if status is "waitlist" %}selected{% endif %}>
+            <option value="{% url 'bookings' status='WAI' date=date %}" {% if status == 'WAI' %}selected{% endif %}>
                 Waitlist
             </option>
         </select>
