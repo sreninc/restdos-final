@@ -29,7 +29,7 @@
                 Total Sales
             </dt>
             <dd class="mt-1 text-3xl font-semibold text-white">
-                €{{ stats.total_sales }}
+                €{{ stats.total_sales|floatformat }}
             </dd>
         </div>
     </dl>
@@ -42,7 +42,7 @@
                 % No-Shows
             </dt>
             <dd class="mt-1 text-3xl font-semibold text-white">
-                {{ stats.no_show_percentage }}%
+                {{ stats.no_show_percentage|floatformat }}%
             </dd>
         </div>
 
@@ -51,7 +51,7 @@
                 % Completed
             </dt>
             <dd class="mt-1 text-3xl font-semibold text-white">
-                {{ stats.completed_percentage }}%
+                {{ stats.completed_percentage|floatformat }}%
             </dd>
         </div>
 
@@ -60,7 +60,7 @@
                 Avg. Booking Value
             </dt>
             <dd class="mt-1 text-3xl font-semibold text-white">
-                €{{ stats.avg_booking_value }}
+                €{{ stats.avg_booking_value|floatformat }}
             </dd>
         </div>
     </dl>
