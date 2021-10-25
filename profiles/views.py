@@ -24,3 +24,11 @@ def profile(request):
     }
 
     return render(request, template, context)
+
+
+def help(request):
+
+    context = {
+        'page': 'help',
+    }
+    return render(request, 'profiles/help.html')
