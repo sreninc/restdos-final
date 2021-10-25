@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    'allauth', # required for allauth
+    'allauth.account', # required for allauth
+    'allauth.socialaccount', # required for allauth
     'tailwind', # Required for Tailwind
     'theme', # Required for Tailwind
     'crispy_forms', # Required for crispy forms
