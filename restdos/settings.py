@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'reports',
     'messaging',
     'accounts',
-    'profile',
+    'profiles',
 ]
 
 MIDDLEWARE = [

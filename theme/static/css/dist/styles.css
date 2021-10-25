@@ -1519,10 +1519,6 @@ select {
   margin: -0.75rem;
 }
 
-.m-2 {
-  margin: 0.5rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1640,16 +1636,16 @@ select {
   margin-top: 2rem;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .ml-3 {
   margin-left: 0.75rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mb-5 {
@@ -2560,6 +2556,10 @@ select {
   padding-bottom: 3rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .pt-4 {
   padding-top: 1rem;
 }
@@ -2576,10 +2576,6 @@ select {
   padding-bottom: 8rem;
 }
 
-.pt-6 {
-  padding-top: 1.5rem;
-}
-
 .pl-4 {
   padding-left: 1rem;
 }
@@ -2590,18 +2586,6 @@ select {
 
 .pb-16 {
   padding-bottom: 4rem;
-}
-
-.pt-10 {
-  padding-top: 2.5rem;
-}
-
-.pb-10 {
-  padding-bottom: 2.5rem;
-}
-
-.pb-3 {
-  padding-bottom: 0.75rem;
 }
 
 .text-left {
