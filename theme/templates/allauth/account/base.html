@@ -1,20 +1,2 @@
-{% extends "bases/base.html" %}
-
-  {% block page_header %}
-  {% endblock %}
-  <div>
-    <strong>Menu:</strong>
-    <ul>
-      {% if user.is_authenticated %}
-      <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-      <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-      {% else %}
-      <li><a href="{% url 'account_login' %}">Sign In</a></li>
-      <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-      {% endif %}
-    </ul>
-  </div>
-    {% block content %}
-
-    {% endblock %}
+{% extends "bases/base-website.html" %}
 
