@@ -8,7 +8,7 @@ from .forms import UserProfileForm
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
-    print(profile)
+    print(profile.first_name)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
