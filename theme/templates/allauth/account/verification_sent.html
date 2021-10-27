@@ -2,11 +2,32 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+{% block extra_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+<!-- Hero section -->
+<div class="relative mt-2">
+    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
+            <div class="absolute inset-0">
+                <img class="h-full w-full object-cover"
+                    src="https://images.unsplash.com/photo-1546195643-70f48f9c5b87?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt="People working on laptops">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700 mix-blend-multiply"></div>
+            </div>
+            <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+                <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                    <span class="block text-white">{% trans "Verify Your E-mail Address" %}</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
-
+<div class="bg-gray-100 pb-12">
+    <div class="w-1/3 mx-auto">
+        <p class="py-6">{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+    </div>
+</div>
 {% endblock %}
