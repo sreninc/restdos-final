@@ -9,8 +9,8 @@ from bookings.models import Booking
 # Create your views here.
 def dashboard(request):
 
-    guests = Guest.objects.all(deleted=False)
-    bookings = Booking.objects.all(deleted=False)
+    guests = Guest.objects.filter(deleted=False)
+    bookings = Booking.objects.filter(deleted=False)
 
     total_guests = 0
     total_bookings = 0
