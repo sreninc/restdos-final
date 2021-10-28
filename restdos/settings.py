@@ -118,7 +118,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/'
+ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
 
 WSGI_APPLICATION = 'restdos.wsgi.application'
 
