@@ -60,6 +60,13 @@ def guest_detail(request, guest_id):
 
     if bookings:
         total_bookings = bookings.count()
+        for booking in bookings:
+            booking.unrating = 5 - booking.rating
+            booking.rating = range(booking.rating)
+            booking.unrating = range(booking.unrating)
+            booking.status = booking.get_status_display()
+            booking.written_date = booking.date.strftime("%a %d %b")
+
 
         if bookings.filter(status='COM'):
             total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
@@ -157,6 +164,7 @@ def guest_detail(request, guest_id):
         'personal_information_form': personal_information_form,
         'notes_form': notes_form,
         'stats': stats,
+        'bookings': bookings,
         'page': 'guests',
     }
     return render(request, 'guests/guest_detail.html', context)
