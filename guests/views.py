@@ -52,18 +52,23 @@ def guest_detail(request, guest_id):
     guest = get_object_or_404(Guest, pk=guest_id)
     bookings = Booking.objects.filter(guest=guest_id)
 
+    total_bookings = 0
+    total_sales = 0
+    no_show_percentage = 0
+    completed_percentage = 0
+    avg_booking_value = 0
+
     if bookings:
         total_bookings = bookings.count()
-        total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
-        no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
-        completed_percentage = (bookings.filter(status='COM').count() / bookings.count()) * 100
-        avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.count()
-    else:
-        total_bookings = 0
-        total_sales = 0
-        no_show_percentage = 0
-        completed_percentage = 0
-        avg_booking_value = 0
+
+        if bookings.filter(status='COM'):
+            total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
+            completed_percentage = (bookings.filter(status='COM').count() / bookings.count()) * 100
+            avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.count()
+        
+        if bookings.filter(status='NOS'):
+            no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
+        
 
     guest_age = (datetime.now() - datetime.combine(guest.guest_since, datetime.min.time())).days
     # Calculating years
