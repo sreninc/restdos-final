@@ -21,6 +21,7 @@ def profile(request):
     template = 'profiles/profile.html'
     context = {
         'form': form,
+        'page': 'account',
     }
 
     return render(request, template, context)
@@ -31,4 +32,4 @@ def help(request):
     context = {
         'page': 'help',
     }
-    return render(request, 'profiles/help.html')
+    return render(request, 'profiles/help.html', context)
