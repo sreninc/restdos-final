@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import MaxValueValidator, MinValueValidator 
 
 # Create your models here.
 class Booking(models.Model):
@@ -19,7 +20,7 @@ class Booking(models.Model):
     date = models.DateField('Booking Date', null=False, blank=False)
     time = models.TimeField('Booking Time', null=False, blank=False)
     people = models.IntegerField('People', default=2, null=False, blank=False)
-    rating = models.IntegerField('Guest Rating', default=5, null=False, blank=False)
+    rating = models.IntegerField('Guest Rating', default=5, null=False, blank=False, validators=[MinValueValidator(1), MaxValueValidator(5)])
     status = models.CharField(
         max_length=3,
         choices=Status.choices,
