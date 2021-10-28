@@ -19,6 +19,8 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
         booking.rating = range(booking.rating)
         booking.unrating = range(booking.unrating)
         booking.status = booking.get_status_display()
+        print(booking.unrating)
+        print(booking.rating)
 
     context = {
         'status': status,
@@ -94,6 +96,7 @@ def edit_booking(request, booking_id):
         if booking_form.is_valid():
             print('success')
             form = booking_form.save()
+            return redirect('bookings', status=request.POST['status'], date=request.POST['date'], )
         else:
             print('failure')
 
