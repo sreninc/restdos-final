@@ -50,7 +50,7 @@ def guests(request):
 def guest_detail(request, guest_id):
 
     guest = get_object_or_404(Guest, pk=guest_id)
-    bookings = Booking.objects.filter(guest=guest_id)
+    bookings = Booking.objects.filter(guest=guest_id, deleted=False)
 
     total_bookings = 0
     total_sales = 0
