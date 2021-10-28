@@ -1,41 +1,19 @@
 from django import forms
-from .models import Signup
 
 
-class SignupForm(forms.ModelForm):
-    class Meta:
-        model = Signup
-        fields = ('first_name', 'last_name', 'email', 'mobile', 'signup_plan', 'signup_monthly',)
-        widgets = {
-            'signup_plan': forms.HiddenInput(),
-            'signup_monthly': forms.HiddenInput(),
-            }
+class SignupForm(forms.Form):
+    first_name = forms.CharField(max_length=30, label='First Name')
+    last_name = forms.CharField(max_length=30, label='Last Name')
+    mobile = forms.CharField(max_length=20, label='Mobile')
+    signup_plan = forms.CharField(max_length=30, label='Signup Plan')
+    signup_monthly = forms.IntegerField(label='Monthly Fee')
 
 
-    def __init__(self, *args, **kwargs):
 
-        super().__init__(*args, **kwargs)
-        placeholders = {
-            'first_name': 'First Name',
-            'last_name': 'Last Name',
-            'email': 'Email',
-            'mobile': 'Mobile',
-            # 'country': 'Country',
-            # 'postcode': 'Postcode',
-            # 'town_or_city': 'Town/City',
-            # 'street_address_1': 'Street Address 1',
-            # 'street_address_2': 'Street Address 2',
-            # 'county': 'County',
-            'signup_plan': 'Signup Plan',
-            'signup_monthly': 'Signup Monthly',
-        }
-
-        self.fields['first_name'].widget.attrs['autofocus'] = True
-        for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = False
+    def signup(self, request, user):
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.mobile = self.cleaned_data['mobile']
+        user.signup_plan = self.cleaned_data['signup_plan']
+        user.signup_monthly = self.cleaned_data['signup_monthly']
+        user.save()
