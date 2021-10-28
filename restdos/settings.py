@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'bookings',
     'reports',
     'messaging',
-    'accounts',
     'profiles',
     'storages', #required for django-storages
 ]
