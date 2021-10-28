@@ -14,13 +14,14 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
     else:
         bookings = Booking.objects.filter(deleted=False, date=date, status=status)
 
+    bookings = bookings.order_by('time')
+
     for booking in bookings:
         booking.unrating = 5 - booking.rating
         booking.rating = range(booking.rating)
         booking.unrating = range(booking.unrating)
         booking.status = booking.get_status_display()
-        print(booking.unrating)
-        print(booking.rating)
+        booking.time = booking.time.strftime("%H:%M")
 
     context = {
         'status': status,
