@@ -8,9 +8,9 @@
         Date
     </label>
     <div class="mt-1 min-w-max">
-        <input type="date" name="filterDate" id="filterDate" value="{{ date }}"
+        <input type="date" name="filterDate" id="filterDate" value="{{ date }}" 
             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
-            onchange="filterBookings()">
+            onChange=filterDate(this.value)>
     </div>
 </div>
 {% endblock%}
@@ -21,8 +21,7 @@
     </label>
     <div class="mt-1 min-w-max">
         <select id="filterStatus" name="filterStatus" onChange="window.location.href=this.value"
-            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md"
-            onchange="filterBookings()">
+            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md">
             <option value="{% url 'bookings' status='all' date=date %}" {% if status is "all" %}selected{% endif %}>
                 All Bookings
             </option>
@@ -270,4 +269,16 @@
     </div>
 </div>
 {% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    function filterDate(date) {
+        status = document.getElementById("filterStatus").value;
+        status = status.substring(0, status.length -11);
+        url = status + date + '/'
+        window.location.href=url;
+    }
+</script>
+
 {% endblock %}
