@@ -2,20 +2,50 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block extra_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+<!-- Hero section -->
+<div class="relative mt-2">
+  <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
+      <div class="absolute inset-0">
+        <img class="h-full w-full object-cover"
+          src="https://images.unsplash.com/photo-1546195643-70f48f9c5b87?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+          alt="People working on laptops">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-800 to-indigo-700 mix-blend-multiply"></div>
+      </div>
+      <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+        <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+          <span class="block text-white">RestDos Sign Out</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
 
-<form method="post" action="{% url 'account_logout' %}">
+<div class="bg-gray-100 pb-12">
+  <div class="w-1/3 mx-auto">
+<p class="pt-6 ml-3">{% trans 'Are you sure you want to sign out?' %}</p>
+
+<form method="POST" action="{% url 'account_logout' %}">
   {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
+  <div class="space-y-8 divide-y divide-gray-200">
+    <div>
+      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4">
+        {{ form|crispy }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{% trans 'Sign Out' %}</button>
+      </div>
+    </div>
+  </div>
+  </div>
 </form>
+</div>
 
 
 {% endblock %}
