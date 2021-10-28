@@ -37,6 +37,7 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 def add_booking(request, guest_id):
 
     booking_form = BookingForm()
+    guest = get_object_or_404(Guest, pk=guest_id)
 
     if request.method == 'POST':
         form_data = {
@@ -60,6 +61,7 @@ def add_booking(request, guest_id):
         'booking_form': booking_form,
         'guest_id': guest_id,
         'page': 'bookings',
+        'guest': guest,
     }
 
     return render(request, 'bookings/add_booking.html', context)
@@ -105,6 +107,7 @@ def edit_booking(request, booking_id):
     context = {
         'booking_form': booking_form,
         'booking_id': booking_id,
+        'booking': booking,
     }
     return render(request, template, context)
 
