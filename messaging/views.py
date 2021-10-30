@@ -26,7 +26,15 @@ def send_message(request):
 
     message = request.POST['message']
     filter = request.POST['filter']
-    receipients = Guest.objects.count()
+    receipients = Guest.objects.filter(deleted=False, user=request.user)
+    print(receipients)
+    receipients = receipients.count()
+    print(receipients)
+
+    if receipients == 0:
+        messages.info(request, 'You have no guests in your system. Please add guests in order to send messages')
+        return redirect('compose_message')
+
     sms_length = len(message)
     if sms_length <=160:
         sms_quantity = 1
