@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
 
 from django.contrib.auth.models import User
 
@@ -8,6 +9,14 @@ import stripe
 
 # Create your views here.
 def index(request):
+    return render(request, 'website/index.html')
+
+
+def newsletter(request):
+    email = request.POST['email-address']
+    send_mail('Newsletter Signup', email, email, ['sean@restdos.com'])
+    messages.success(request,f'You have successfully signed up to our newsletter with your email: {email}')
+    template = request.META['HTTP_REFERER']
     return render(request, 'website/index.html')
 
 

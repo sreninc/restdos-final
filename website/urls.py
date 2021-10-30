@@ -12,8 +12,9 @@ urlpatterns = [
     path('terms/', views.terms, name='terms'),
     path('privacy/', views.privacy, name='privacy'),
     path('blog/', views.blog, name='blog'),
-    path('guest_management', views.guest_management, name='guest_management'),
-    path('marketing', views.marketing, name='marketing'),
-    path('automated_messaging', views.automated_messaging, name='automated_messaging'),
-    path('booking_management', views.booking_management, name='booking_management'),
+    path('guest_management/', views.guest_management, name='guest_management'),
+    path('marketing/', views.marketing, name='marketing'),
+    path('automated_messaging/', views.automated_messaging, name='automated_messaging'),
+    path('booking_management/', views.booking_management, name='booking_management'),
+    path('newsletter/', views.newsletter, name='newsletter'),
 ]
