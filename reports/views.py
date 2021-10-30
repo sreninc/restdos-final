@@ -11,8 +11,8 @@ from bookings.models import Booking
 @login_required
 def dashboard(request):
 
-    guests = Guest.objects.filter(deleted=False)
-    bookings = Booking.objects.filter(deleted=False)
+    guests = Guest.objects.filter(deleted=False, user=request.user)
+    bookings = Booking.objects.filter(deleted=False, user=request.user)
 
     total_guests = 0
     total_bookings = 0
