@@ -43,7 +43,7 @@
       <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
     </svg>
     <div class="mt-12">
-      <form action="#" method="POST" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+      <form action="{% url 'contact' %}" method="POST" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
         {% csrf_token %}
         <div>
           <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
@@ -73,26 +73,6 @@
           <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
           <div class="mt-1">
             <textarea id="message" name="message" rows="4" class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md" required></textarea>
-          </div>
-        </div>
-        <div class="sm:col-span-2">
-          <div class="flex items-start">
-            <div class="flex-shrink-0">
-              <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
-              <button type="button" class="bg-gray-200 relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" role="switch" aria-checked="false">
-                <span class="sr-only">Agree to policies</span>
-                <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-                <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"></span>
-              </button>
-            </div>
-            <div class="ml-3">
-              <p class="text-base text-gray-500">
-                By selecting this, you agree to the
-                <a href="#" class="font-medium text-gray-700 underline">Privacy Policy</a>
-                and
-                <a href="#" class="font-medium text-gray-700 underline">Cookie Policy</a>.
-              </p>
-            </div>
           </div>
         </div>
         <div class="sm:col-span-2">

@@ -56,7 +56,15 @@ def pricing(request):
 
 
 def contact(request):
-
+    if request.method == 'POST':
+        email = request.POST['email']
+        first_name = request.POST['first-name']
+        last_name = request.POST['last-name']
+        restaurant = request.POST['company']
+        message = request.POST['message']
+        message = message + ' ' + first_name + ' ' + last_name + ' ' + restaurant + ' ' + email
+        send_mail('New Message', message, email, ['sean@restdos.com'])
+        messages.success(request,f'You have successfully sent a message to us. We will reply to your email: {email}')
     return render(request, 'website/contact.html')
 
 def signup_email(request, signup_plan, signup_monthly):
