@@ -1,0 +1,125 @@
+{% extends "bases/base-app.html" %}
+
+{% block extra_title %}Messaging{% endblock %}
+
+{% block body %}
+
+<form class="space-y-8 divide-y divide-gray-200 lg:w-1/2 mx-auto">
+    <div class="space-y-8 divide-y divide-gray-200">
+      <div>
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Send Text Message
+          </h3>
+          <p class="mt-1 text-sm text-gray-500">
+            Check your message details before paying. 
+          </p>
+        </div>
+
+        <div class="mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <p class="mt-2 text-sm text-gray-500">
+                Your choosen filter of "<strong>{{ filter }}</strong>" will send a message to <strong>{{ receipients }}</strong> guests.
+            </p>
+            <p class="mt-2 text-sm text-gray-500">
+                Your message (as displayed below), contains <strong>{{ sms_length }}</strong> characters. This means <strong>{{ sms_quantity }}</strong> sms will be sent per guest.
+            </p>
+            <p class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md bg-white p-2 my-6">{{ message }}</p>
+            <p class="mt-2 text-sm text-gray-500">
+                The price per sms is 8c. The total cost of this campaign will therefore be 8c x {{ total_sms }} SMS = <strong>€{{ sms_cost }}</strong>.
+            </p>
+            {% if low_cost %}
+            <p class="mt-2 text-sm text-red-500" id="sms-warning">There is a €1 minimum charge allowed by Stripe. Currently your campaign is below this amount which means you will pay €1 rather than the campaign price mentioned above.</p>
+            {% endif %}
+
+            
+          </div>
+  
+          <div class="mt-6 sm:col-span-6">
+            {% csrf_token %}
+            <div class="space-y-8 divide-y divide-gray-200">
+              <div>
+                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4">
+                  <div id="card-element"></div>
+                  <div id="card-errors" role="alert"></div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+
+          <div class="flex justify-end mt-6">
+            <button type="submit" id="sms-preview" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Pay & Send
+            </button>
+
+        </div>
+      </div>
+    </div>
+</form>
+
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+
+<script>
+  
+  var stripePublicKey = document.getElementById('id_stripe_public_key').innerHTML.slice(1, -1);
+  var clientSecret = document.getElementById('id_client_secret').innerHTML.slice(1, -1);
+  var stripe = Stripe(stripePublicKey);
+  var elements = stripe.elements();
+  var card = elements.create('card', { });
+  card.mount('#card-element');
+
+  // ERROR CHECKING STRIPE
+  card.addEventListener('change', function (event) {
+    var errorDiv = document.getElementById('card-errors');
+    if (event.error) {
+      var html = `
+        <span class="icon" role="alert">
+            <i class="fas fa-times"></i>
+        </span>
+        <span>${even.error.message}</span>
+        `;
+      errorDiv.innherHTML = html;
+    } else {
+      errorDiv.textContent = '';
+    }
+  });
+
+
+  // PAYMENT INTENT WITHIN STRIPE
+  var form = document.getElementById('signup-form');
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    console.log('button pressed');
+    card.update({ 'disabled': true });
+    document.getElementById('submit-button').disabled = true;
+    stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card,
+      }
+    }).then(function (result) {
+      if (result.error) {
+        var errorDiv = document.getElementById('card-errors');
+        var html = `
+          <span class="icon" role="alert">
+              <i class="fas fa-times">error</i>
+          </span>
+          <span>${result.error.message}</span>
+        `;
+        errorDiv.innerHTML = html;
+        card.update({ 'disabled': false });
+        document.getElementById('submit-button').disabled = false;
+        console.log(result.error.message);
+      } else {
+        if (result.paymentIntent.status === 'succeeded') {
+          form.submit();
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}
