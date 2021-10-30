@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import SignupForm
-from .models import Signup
+from django.contrib.auth.models import User
 
 import stripe
 
@@ -51,43 +50,32 @@ def contact(request):
 
     return render(request, 'website/contact.html')
 
+def signup_email(request, signup_plan, signup_monthly):
+
+    if request.method == 'POST':
+        if User.objects.filter(email=request.POST['email']):
+            messages.warning(request, 'A user with that email already exists.')
+        else:
+            return redirect('signup', signup_plan=signup_plan, signup_monthly=signup_monthly)
+
+
+
+    context = {
+        'signup_plan': signup_plan,
+        'signup_monthly': signup_monthly,
+    }
+    return render(request, 'website/signup_email.html', context)
 
 def signup(request, signup_plan, signup_monthly):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    if request.method == 'POST':
-        form_data = {
-            'first_name': request.POST['first_name'],
-            'last_name': request.POST['last_name'],
-            'email': request.POST['email'],
-            'mobile': request.POST['mobile'],
-            'signup_plan': request.POST['signup_plan'],
-            'signup_monthly': request.POST['signup_monthly'],
-        }
-        signup_form = SignupForm(form_data)
-        if signup_form.is_valid():
-            signup_form.save()
-            return redirect(reverse('dashboard'))
-        else:
-            print(signup_form.errors)
-    else:
-        messages.info(request, 'There was an error with your form. \
-        Please double check your information.')
 
     stripe_total = round(int(signup_monthly) * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
         amount=stripe_total,
         currency=settings.STRIPE_CURRENCY,
-    )
-
-
-    signup_form = SignupForm(
-        initial = {
-            'signup_plan': signup_plan,
-            'signup_monthly': signup_monthly,
-        }
     )
 
     if not stripe_public_key:
@@ -97,7 +85,6 @@ def signup(request, signup_plan, signup_monthly):
     context = {
         'signup_plan': signup_plan,
         'signup_monthly': signup_monthly,
-        'signup_form': signup_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -105,6 +92,9 @@ def signup(request, signup_plan, signup_monthly):
     if not signup_plan:
         messages.error(request, 'You have not selected a signup plan')
         return redirect(reverse('pricing'))
+
+    if request.method == 'POST':
+        return redirect('account_signup')
     
 
     return render(request, 'website/signup.html', context)
