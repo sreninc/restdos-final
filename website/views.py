@@ -12,7 +12,7 @@ def index(request):
 
 
 def pricing(request):
-    signups = Signup.objects.count()
+    signups = User.objects.count()
     secondary_string = 'at a permanently reduced price for the next 10 customers'
     if signups <= 10:
         monthly = 33

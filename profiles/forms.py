@@ -17,9 +17,6 @@ class UserProfileForm(forms.ModelForm):
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'email': 'Email',
-            'mobile': 'Mobile',
-            'signup_plan': 'Signup Plan',
-            'signup_monthly': 'Signup Monthly',
         }
 
         self.fields['first_name'].widget.attrs['autofocus'] = True
