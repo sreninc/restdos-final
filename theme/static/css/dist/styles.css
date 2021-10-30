@@ -2390,6 +2390,11 @@ select {
      object-fit: cover;
 }
 
+.object-bottom {
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+
 .p-4 {
   padding: 1rem;
 }

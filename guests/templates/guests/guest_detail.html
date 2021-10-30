@@ -46,7 +46,7 @@
                     {% csrf_token %}
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid sm:grid-cols-2 gap-6">
                                 {{ personal_information_form|crispy }}
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                         <dl class="my-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
                             <div class="px-4 py-2 bg-indigo-700 shadow rounded-lg overflow-hidden sm:p-6">
-                                <dt class="text-sm font-medium text-yellow-50 truncate uppercase">
+                                <dt class="text-sm font-medium text-yellow-50 uppercase">
                                     Guest Age
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
@@ -137,7 +137,7 @@
                             </div>
 
                             <div class="px-4 py-5 bg-indigo-700 shadow rounded-lg overflow-hidden sm:p-6">
-                                <dt class="text-sm font-medium text-yellow-50 truncate uppercase">
+                                <dt class="text-sm font-medium text-yellow-50 uppercase">
                                     Total Bookings
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
@@ -146,7 +146,7 @@
                             </div>
 
                             <div class="px-4 py-5 bg-indigo-700 shadow rounded-lg overflow-hidden sm:p-6">
-                                <dt class="text-sm font-medium text-yellow-50 truncate uppercase">
+                                <dt class="text-sm font-medium text-yellow-50 uppercase">
                                     Total Sales
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
@@ -156,7 +156,7 @@
                         </dl>
                         <dl class="my-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
                             <div class="px-4 py-5 bg-indigo-700 shadow rounded-lg overflow-hidden sm:p-6">
-                                <dt class="text-sm font-medium text-yellow-50 truncate uppercase">
+                                <dt class="text-sm font-medium text-yellow-50 uppercase">
                                     % NO-SHOW BOOKINGS
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
@@ -165,7 +165,7 @@
                             </div>
 
                             <div class="px-4 py-5 bg-indigo-700 shadow rounded-lg overflow-hidden sm:p-6">
-                                <dt class="text-sm font-medium text-yellow-50 truncate uppercase">
+                                <dt class="text-sm font-medium text-yellow-50 uppercase">
                                     % BOOKINGS COMPLETED
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
@@ -174,7 +174,7 @@
                             </div>
 
                             <div class="px-4 py-5 bg-indigo-700 shadow rounded-lg overflow-hidden sm:p-6">
-                                <dt class="text-sm font-medium text-yellow-50 truncate uppercase">
+                                <dt class="text-sm font-medium text-yellow-50 uppercase">
                                     AVERAGE BOOKING VALUE
                                 </dt>
                                 <dd class="mt-1 text-3xl font-semibold text-yellow-50">
