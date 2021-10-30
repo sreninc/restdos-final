@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
 
 from guests.models import Guest
 from bookings.models import Booking
@@ -7,6 +8,7 @@ from bookings.models import Booking
 
 
 # Create your views here.
+@login_required
 def dashboard(request):
 
     guests = Guest.objects.filter(deleted=False)

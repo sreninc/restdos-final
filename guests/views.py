@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Sum
 
 from datetime import datetime
@@ -11,6 +12,7 @@ from .forms import NotesForm
 from .forms import PersonalInformationForm
 
 # Create your views here.
+@login_required
 def guests(request):
 
     guests = Guest.objects.filter(deleted=False)
@@ -46,7 +48,7 @@ def guests(request):
 
     return render(request, 'guests/guests.html', context)
 
-
+@login_required
 def guest_detail(request, guest_id):
 
     guest = get_object_or_404(Guest, pk=guest_id)
@@ -169,7 +171,7 @@ def guest_detail(request, guest_id):
     }
     return render(request, 'guests/guest_detail.html', context)
 
-
+@login_required
 def add_guest(request):
     stars = range(5)
 
@@ -210,7 +212,7 @@ def add_guest(request):
     }
     return render(request, 'guests/add_guest.html', context)
 
-
+@login_required
 def delete_guest(request, guest_id):
     guest = get_object_or_404(Guest, pk=guest_id)
     guest.deleted = True

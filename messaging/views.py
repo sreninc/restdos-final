@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from sms import send_sms
 
 # Create your views here.
+@login_required
 def compose_message(request):
     send_sms(
         'Here is the message',
@@ -17,6 +19,7 @@ def compose_message(request):
     return render(request, 'messaging/compose_message.html', context)
 
 
+@login_required
 def preview_message(request):
 
     context = {
@@ -25,6 +28,7 @@ def preview_message(request):
     return render(request, 'messaging/preview_message.html', context)
 
 
+@login_required
 def send_message(request):
 
     context = {

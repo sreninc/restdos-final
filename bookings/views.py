@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 from guests.models import Guest
 from .models import Booking
@@ -7,6 +8,7 @@ from .models import Booking
 from .forms import BookingForm
 
 # Create your views here.
+@login_required
 def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 
     if status == 'all':
@@ -33,7 +35,7 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 
     return render(request, 'bookings/bookings.html', context)
 
-
+@login_required
 def add_booking(request, guest_id):
 
     booking_form = BookingForm()
@@ -111,7 +113,7 @@ def edit_booking(request, booking_id):
     }
     return render(request, template, context)
 
-
+@login_required
 def delete_booking(request, booking_id):
     booking = get_object_or_404(Booking, pk=booking_id)
     booking.deleted = True
