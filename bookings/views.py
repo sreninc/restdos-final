@@ -12,9 +12,9 @@ from .forms import BookingForm
 def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 
     if status == 'all':
-        bookings = Booking.objects.filter(deleted=False, date=date)
+        bookings = Booking.objects.filter(deleted=False, date=date, user=request.user)
     else:
-        bookings = Booking.objects.filter(deleted=False, date=date, status=status)
+        bookings = Booking.objects.filter(deleted=False, date=date, status=status, user=request.user)
 
     bookings = bookings.order_by('time')
 
@@ -38,11 +38,12 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 @login_required
 def add_booking(request, guest_id):
 
-    booking_form = BookingForm()
-    guest = get_object_or_404(Guest, pk=guest_id)
+    booking_form = BookingForm(initial={'user': request.user.id })
+    guest = get_object_or_404(Guest, pk=guest_id, user=request.user)
 
     if request.method == 'POST':
         form_data = {
+            'user': request.user,
             'guest': guest_id,
             'date': request.POST['date'],
             'time': request.POST['time'],
@@ -71,7 +72,7 @@ def add_booking(request, guest_id):
 
 def edit_booking(request, booking_id):
 
-    booking = get_object_or_404(Booking, pk=booking_id)
+    booking = get_object_or_404(Booking, pk=booking_id, user=request.user)
 
     booking_form = BookingForm()
 
@@ -89,6 +90,7 @@ def edit_booking(request, booking_id):
 
     if request.method == 'POST':
         form_data = {
+            'user': request.user,
             'guest': request.POST['guest'],
             'date': request.POST['date'],
             'time': request.POST['time'],
@@ -115,7 +117,7 @@ def edit_booking(request, booking_id):
 
 @login_required
 def delete_booking(request, booking_id):
-    booking = get_object_or_404(Booking, pk=booking_id)
+    booking = get_object_or_404(Booking, pk=booking_id, user=request.user)
     booking.deleted = True
     booking.save(update_fields=['deleted'])
     return redirect('bookings')

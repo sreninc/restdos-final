@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import MaxValueValidator, MinValueValidator 
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Booking(models.Model):
@@ -16,6 +17,7 @@ class Booking(models.Model):
         TABLEREADY = 'TAB',_('Table Ready')
         WAITLIST = 'WAI',_('Waitlist')
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     guest = models.ForeignKey('guests.Guest', null=True, blank=False, on_delete=models.SET_NULL)
     date = models.DateField('Booking Date', null=False, blank=False)
     time = models.TimeField('Booking Time', null=False, blank=False)
