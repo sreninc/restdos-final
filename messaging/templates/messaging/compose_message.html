@@ -67,7 +67,7 @@
       chars = this.value.length;
       charUsed.innerHTML = chars;
       document.getElementById('sms-warning').classList.add('hidden');
-      document.getElementById('sms-preview').setAttribute('disabled', '');
+      document.getElementById('sms-preview').disabled = false;
       document.getElementById('sms-preview').classList.add('bg-indigo-600');
       document.getElementById('sms-preview').classList.remove('bg-indigo-300');
 

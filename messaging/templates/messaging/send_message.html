@@ -23,7 +23,7 @@
             <p class="mt-2 text-sm text-gray-500">
                 Your message (as displayed below), contains <strong>{{ sms_length }}</strong> characters. This means <strong>{{ sms_quantity }}</strong> sms will be sent per guest.
             </p>
-            <p class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md bg-white p-2 my-6">{{ message }}</p>
+            <textarea rows="5" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md bg-white p-2 my-6" disabled>{{ message }}</textarea>
             <p class="mt-2 text-sm text-gray-500">
                 The price per sms is 8c. The total cost of this campaign will therefore be 8c x {{ total_sms }} SMS = <strong>€{{ sms_cost }}</strong>.
             </p>
