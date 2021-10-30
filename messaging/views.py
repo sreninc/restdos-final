@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
@@ -11,12 +11,7 @@ import stripe
 # Create your views here.
 @login_required
 def compose_message(request):
-    send_sms(
-        'Here is the message',
-        '+12065550100',
-        ['+441134960000'],
-        fail_silently=False
-    )
+
 
     context = {
         'page': 'messaging',
@@ -67,3 +62,15 @@ def send_message(request):
         'low_cost': low_cost,
     }
     return render(request, 'messaging/send_message.html', context)
+
+
+def message_sent(request):
+    send_sms(
+        'Here is the message',
+        '+12065550100',
+        ['+441134960000'],
+        fail_silently=False
+    )
+
+    messages.success(request, 'Your payment was successful and you message campaign has been sent')
+    return redirect('compose_message')

@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path('compose_message', views.compose_message, name='compose_message'),
     path('send_message', views.send_message, name='send_message'),
+    path('message_sent', views.message_sent, name='message_sent'),
 ]
