@@ -3,7 +3,7 @@
 {% block page_header %}
 <div class="h-screen flex overflow-hidden bg-gray-100">
   <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-  <div class="fixed inset-0 flex z-40 md:hidden hidden" role="dialog" aria-modal="true" id="mobileMenu">
+  <div class="fixed inset-0 flex z-40 lg:hidden hidden" role="dialog" aria-modal="true" id="mobileMenu">
     <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true" onclick="toggleMenu('mobileMenu')"></div>
     <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-indigo-700">
       <div class="absolute top-0 right-0 -mr-12 pt-2">
@@ -104,7 +104,7 @@
   </div>
 
   <!-- Static sidebar for desktop -->
-  <div class="hidden bg-indigo-700 md:flex md:flex-shrink-0">
+  <div class="hidden bg-indigo-700 lg:flex lg:flex-shrink-0">
     <div class="flex flex-col w-64">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto">
@@ -191,7 +191,7 @@
   <div class="flex flex-col w-0 flex-1 overflow-hidden">
     <div class="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
       <button type="button"
-        class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+        class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 lg:hidden"
         onclick="toggleMenu('mobileMenu')">
         <span class="sr-only">Open sidebar</span>
         <!-- Heroicon name: outline/menu-alt-2 -->
