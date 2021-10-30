@@ -1,5 +1,6 @@
 from django import forms
 from .models import Guest
+from django.forms import HiddenInput
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -12,9 +13,10 @@ class DateInput(forms.DateInput):
 class PersonalInformationForm(forms.ModelForm):
     class Meta:
         model = Guest
-        fields = ('first_name', 'last_name', 'email', 'mobile', 'dob', 'rating',  'sms_marketing', 'sms_transactional',)
+        fields = ('user', 'first_name', 'last_name', 'email', 'mobile', 'dob', 'rating',  'sms_marketing', 'sms_transactional',)
         widgets = {
-            'dob': DateInput()
+            'dob': DateInput(),
+            'user': HiddenInput(),
         }
 
 
@@ -22,6 +24,7 @@ class PersonalInformationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         placeholders = {
+            'user': 'user',
             'first_name': 'Marilyn',
             'last_name': 'Monroe',
             'email': 'marilyn.monroe@email.com',

@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Guest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField('First Name', max_length=50, null=False, blank=False)
     last_name = models.CharField('Last Name', max_length=50, null=False, blank=False)
     mobile = models.CharField('Mobile', max_length=15, null=False, blank=False)

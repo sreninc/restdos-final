@@ -15,7 +15,7 @@ from .forms import PersonalInformationForm
 @login_required
 def guests(request):
 
-    guests = Guest.objects.filter(deleted=False)
+    guests = Guest.objects.filter(deleted=False, user=request.user)
     query = None
 
     if request.GET:
@@ -51,8 +51,8 @@ def guests(request):
 @login_required
 def guest_detail(request, guest_id):
 
-    guest = get_object_or_404(Guest, pk=guest_id)
-    bookings = Booking.objects.filter(guest=guest_id, deleted=False)
+    guest = get_object_or_404(Guest, pk=guest_id, user=request.user)
+    bookings = Booking.objects.filter(guest=guest_id, deleted=False, user=request.user)
 
     total_bookings = 0
     total_sales = 0
@@ -175,7 +175,7 @@ def guest_detail(request, guest_id):
 def add_guest(request):
     stars = range(5)
 
-    personal_information_form = PersonalInformationForm()
+    personal_information_form = PersonalInformationForm(initial={'user': request.user.id })
 
     if request.method == 'POST':
         sms_marketing = False
@@ -187,7 +187,11 @@ def add_guest(request):
         if 'sms_transactional' in request.POST:
             sms_transactional = True
 
+        print(request.user)
+        print(request.user.id)
+
         form_data = {
+            'user': request.user,
             'first_name': request.POST['first_name'],
             'last_name': request.POST['last_name'],
             'email': request.POST['email'],
@@ -202,7 +206,7 @@ def add_guest(request):
             form = personal_information_form.save()
             return redirect('guest_detail', guest_id=form.id)
         else:
-            print("failure")
+            print(personal_information_form.errors)
 
 
     context = {
@@ -214,7 +218,7 @@ def add_guest(request):
 
 @login_required
 def delete_guest(request, guest_id):
-    guest = get_object_or_404(Guest, pk=guest_id)
+    guest = get_object_or_404(Guest, pk=guest_id, user=request.user)
     guest.deleted = True
     guest.save(update_fields=['deleted'])
     return redirect('guests')
