@@ -1,16 +1,5 @@
 # restdos-final
 
-Deployment
-1. pip3 install -r requirements.txt
-1. python3 manage.py tailwind install
-1. python3 manage.py tailwind start
-1. python3 manage.py migrate
-1. python3 manage.py createsuperuser
-1. python3 manage.py loaddata guests
-1. python3 manage.py loaddata signups
-1. python3 manage.py runserver
-
-
 # RestDos
 [Click To See Live Site](https://restdos-final.herokuapp.com/)
 
@@ -81,6 +70,8 @@ As a user I want to ...
 ### Business Stories
 As the website owner I want to ...
 - Drive signups
+- Generate Leads
+This is achieved through social links in the footer of the website as well as the newsletter signup at the bottom of every page.
 - To receive money from signups
 - Be able to manage queries from users
 - Be able to help users with queries or changes to their accounts
@@ -102,33 +93,38 @@ The below image links to figma design file of app side the application.
 ## Website Pages and Features
 
 ### Common Features
+You can sign up to the newsletter from every page on the website. This sends an email to the site owner and shows a success message to the website user. This is a great way for the site owner to generate leads for potential future revenue. 
 
 ### Homepage
+This is an eye grabbing page that is focused on getting the website user to click through to the pricing page. It focuses on value delivery and problem solving for the user.
 
 
 ### Solutions
+This breaks down the main features of the application for users who want a bit more detail before proceeding to signing up and paying.
 
 ### Contact
+This form lets website users who have additional questions to send them to the site owner. It is another way to generate leads.
 
 ### Pricing
+The pricing page focuses on simple, easy to understand pricing and quick CTA to help drive website users to signing up to the service. It also lists top features as well as an FAQ for any of those last minute doubts. The pricing shown changes based on how many users the system has. As user numbers increase so does the price.
 
 ### Blog
-
-### Live Demo
+The blog contains resources from across the industry that may be of interest to website visitors. It's main purpose is to show the knowledge and industry connections the application has. This is important when dealing with industries like restaurants as a common perception is that tech doesn't know anything about the service industry.
 
 ### Privacy
+This contains a privacy policy as required under EU law.
 
 ### Terms
-
-### Newsletter Signup
+This contains the terms of use and service for the website and application as required under EU law. It also serves as the contract for when people signup so that the business is covered.
 
 ### Signup
-
-### Confirm Email
-
-### Confirm confirmed Email
-
-### Login
+The signup flow contains a number of stages as outlined below:
+1. Email check - this is just to ensure the user isn't already a user before we take payment
+1. payment - this is to confirm what they are signing up to and take payment from them. It also confirms the terms and conditions of the contract.
+1. Signup - This is the actual signup form that will create the users account. Ideally this would be part of the payment form but I was not able to customize allauth in such a way. Streamlining the signup process here would be an ideal #potential-future-improvement as it would increase the conversion rate for signups. 
+1. Email verification - the signup is sent an email to confirm their email
+1. Email confirmation - When they click on the link in their email it gets them to confirm it. 
+1. Signin - They can now signin to their account via the login page and now have their own account.
 
 ## App Pages and Features
 
@@ -149,32 +145,42 @@ This page shows some key statistics about the salons performance on RestDos. It 
 - Avg. Booking Value: Total Sales divided by the number of bookings with status completed that are not deleted.
 
 ### Guests
-This page shows a table of guests information. They can also add a guest for here
+This page shows a table of guests information ordered by first name and last name. There is currently no pagination on this page. It is a #potential-future-improvement as large databases will create significant load times if either pagination or lazy loading is not implemented. 
+
+From this page the users can add a new guest to their system or access an existing guest to see their complete profile.
 
 #### Add Guest
+When adding a guest the personal information section is the only section avaiable. There is validation on all fields here however it should be noted that duplicate emails, names and mobile number are allowed. This is due to the fact that many bookings by different guests would be under the same details. The easiest example is a family where they are bookign in for each other with the same detais. The restaurant needs the name on the booking but it doesn't really matter if the email is the same as another guest profile. 
+
+Once saved they will be taken to the guest detail page for the newly created guest. 
 
 #### Guest Detail
+On this page the user can add a booking for the guest or delete the guest. It should be noted that while for the user the guest is deleted it is not actually deleted from the database. The main reason for this is that mistakes and disgruntled employees will often result in deleted profiles. Not removing them from the database means support are able to make these profiles active again. if the application moved into the POS space it would also be a requirement for that information not to be deleted to comply with financial regulations. 
 
-#### Delete Guest
+The guest rating in this section is a rating that the restaurant can give to the guest. While this may seem strange it is a feature that allows the restaurant to identify VIP guests that they want to give special treatment to or as a way of marking which type of table the guest should be given when booking in. Delivering service in this way greatly increases the revenue of the restaurant.
+
+There are 3 notes sections in the guest detail page that allow the user to add important notes about the guest. There is also a stats section that shows some interesting stats that restaurant owners will want to know about their guests. And finally there is a booking section that contains all the bookings for the guest that have not been deleted. 
 
 ### Bookings
+This is where the user will see their booking list. They can filter the list by booking status and date. The filters always default to all bookings for status and the current date in the date field. Bookings are ordered by time. 
 
-#### Add Bookings
+The user can access the guest detail page for each booking by clicking on the guest column and they can edit the booking by clicking on the edit column on the right hand side for each booking. To add a booking they must do this through the guest profile.
 
-#### Edit Booking
+#### Add & Edit Bookings
+Users add bookings through the guest profile and edit them through the guest profile or on the bookings page. They must fill in all fields and the guest rating, people and booking value must all be above 0.
 
-#### Delete Booking
+The guest rating in this form would ideally be submitted by the guest themselves after the service. Normally off the back of receiving an SMS or Email with a review link. Unfortunately implementing this was outside of the scope of this project but is certainly a #potential-future-improvement.
+
+When editing a booking they can delete the booking as well. It should be noted that while for the user the booking is deleted it is not actually deleted from the database. The main reason for this is that mistakes and disgruntled employees will often result in deleted bookings. Not removing them from the database means support are able to make these profiles active again. if the application moved into the POS space it would also be a requirement for that information not to be deleted to comply with financial regulations. 
 
 ### Messaging
-
-#### Compose Message
-
-#### Pay & Send Message
+Here the user can send a sms message to all of their guests. It consists of 2 screens. The first is a compose screen that informs them of how many messages they will be sending per guest. The second is a preview & send screen where more details about the campaing are displayed to the user so they can make an informed decision on sending the campaign or not. Payment is taken immediately for the campaign. 
 
 ### Help
+The help page details what they can do in the software and is the resource a new user would use after signing up to the service. 
 
 ### Logout
-
+Users can logout here and a confirm page is shown to them prior to actually logging them out.
 
 ***
 
@@ -192,72 +198,24 @@ This page shows a table of guests information. They can also add a guest for her
 
 ## Testing
 
-## Website
-- Email signup works
-### Homepage
-- Links work
-- Content appears right on mobile, tablet and desktop
-- Colour scheme is consistent
-- Lighthouse, pep8
-- no lorem ipsum
-### Solutions
-### Pricing
-- Correct pricing appears
-### Blog
-### Contact
-- Send message works properly
-- Loading icon works properly
-- Form validation functions
-### Live Demo
-- Video plays as expected
-### Privacy
-### Terms
-### Login
-- Correct login directs to dashboard
-- Incorrect details informs user of error
-- Form validation functions correctly
-### Forgot Password
-- Email functions correctly
-### Signup
-- Existing email won't allow signup
-- Form validation works
-- Stripe payment successfully taken
-- Error if card details wrong
-- Loading symbol functions correctly
-### Confirm Email
-- email sends correctly
-- should not be able to access directly outside of email link
-### Confirm confirmed Email
-- When confirmed user is directed to help page
-- should not be able to access directly
-
-## App
-### Dashboard
-### Guests
-1. Guests
-1. Add Guest
-1. Guest Detail
-### Bookings
-1. Bookings
-1. Add Booking
-1. Edit Booking
-### Messaging
-1. Compose Message
-1. Send Message
-### Help
-### Signout Confirmation
+All testing is present in testing tables at [TESTING.md](TESTING.md)
 
 ***
 
 ## Bugs and Issues Log
 
+All bugs and issues that occured during build are marked FIX in the commit log if they aren't present in the testing tables mentioned above. The bugs that occured during this project where on the most part oversights during initial feature development caused by my lack of time to complete the project (something entirely my own fauly of course). 
+
 ***
 
 ## Potential Future Features
 1. Reports
-1. Transactional Messaging
-1. Users
-1. Booking Widget
+1. Transactional Messaging to allow reviews to be made by guests after the service.
+1. Users so the restaurant can control access to various things rather than having just 1 login.
+1. Booking Widget so that guests can create bookings directly into the system based on the restaurants settings.
+1. Improved signup flow with less steps. Ideally all in 1 or at most 2 pages.
+1. Ability for users to un-delete guests and bookings themselves to remove the need to contact support (turning it into an archived function rather than deleted).
+
 
 ***
 
