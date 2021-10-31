@@ -117,7 +117,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/reports/dashboard/'
+LOGIN_REDIRECT_URL = '/profile/help'
 ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/'
 ACCOUNT_SIGNUP_FORM_CLASS = 'website.forms.SignupForm'
 
