@@ -39,7 +39,7 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 def add_booking(request, guest_id):
 
     booking_form = BookingForm(initial={'user': request.user.id })
-    guest = get_object_or_404(Guest, pk=guest_id, user=request.user)
+    guest = get_object_or_404(Guest, pk=guest_id, deleted=False, user=request.user)
 
     if request.method == 'POST':
         form_data = {
