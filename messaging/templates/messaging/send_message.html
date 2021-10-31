@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<form class="space-y-8 divide-y divide-gray-200 lg:w-1/2 mx-auto" method="POST" action="{% url 'send_message' %}" id="sendMessage">
+<form class="space-y-8 divide-y divide-gray-200 lg:w-1/2 mx-auto" method="POST" action="{% url 'message_success' message mobiles %}" id="sendMessage">
   <div class="space-y-8 divide-y divide-gray-200">
     <div>
       <div>
@@ -24,7 +24,8 @@
           Your message (as displayed below), contains <strong>{{ sms_length }}</strong> characters. This means
           <strong>{{ sms_quantity }}</strong> sms will be sent per guest.
         </p>
-        <textarea rows="5"
+        <input type="hidden" value="{{ mobiles }}" id="mobiles">
+        <textarea rows="5" id="message"
           class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md bg-white p-2 my-6"
           disabled>{{ message }}</textarea>
         <p class="mt-2 text-sm text-gray-500">

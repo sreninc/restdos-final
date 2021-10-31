@@ -33,17 +33,6 @@ def send_message(request):
     receipients = receipients.count()
     
 
-    if request.method == 'POST':
-        send_sms(
-            message,
-            'No Reply',
-            mobiles,
-            fail_silently=False
-        )
-        messages.success(request, 'Your payment was successful and you message campaign has been sent')
-
-    
-
     if receipients == 0:
         messages.info(request, 'You have no guests in your system. Please add guests in order to send messages')
         return redirect('compose_message')
@@ -81,5 +70,17 @@ def send_message(request):
         'sms_quantity': sms_quantity,
         'sms_cost': sms_cost,
         'low_cost': low_cost,
+        'mobiles': mobiles,
     }
     return render(request, 'messaging/send_message.html', context)
+
+
+def message_success(request, message, mobiles):
+    send_sms(
+        message,
+        'No Reply',
+        mobiles,
+        fail_silently=False
+    )
+    messages.success(request, 'Your payment was successful and you message campaign has been sent')
+    return redirect('compose_message')
