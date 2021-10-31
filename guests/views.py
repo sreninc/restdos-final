@@ -52,7 +52,7 @@ def guests(request):
 @login_required
 def guest_detail(request, guest_id):
 
-    guest = get_object_or_404(Guest, pk=guest_id, user=request.user)
+    guest = get_object_or_404(Guest, pk=guest_id, user=request.user, deleted=False)
     bookings = Booking.objects.filter(guest=guest_id, deleted=False, user=request.user)
 
     total_bookings = 0
