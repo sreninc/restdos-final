@@ -30,7 +30,7 @@ def dashboard(request):
     if bookings.filter(status='COM'):
         total_sales = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum']
         completed_percentage = (bookings.filter(status='COM').count() / bookings.count()) * 100
-        avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.count()
+        avg_booking_value = bookings.filter(status='COM').aggregate(Sum('booking_value'))['booking_value__sum'] / bookings.filter(status='COM').count()
         
     if bookings.filter(status='NOS'):
         no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
