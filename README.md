@@ -152,6 +152,8 @@ From this page the users can add a new guest to their system or access an existi
 #### Add Guest
 When adding a guest the personal information section is the only section avaiable. There is validation on all fields here however it should be noted that duplicate emails, names and mobile number are allowed. This is due to the fact that many bookings by different guests would be under the same details. The easiest example is a family where they are bookign in for each other with the same detais. The restaurant needs the name on the booking but it doesn't really matter if the email is the same as another guest profile. 
 
+At the moment the mobile is a char field as I didn't get time to add validation that would account for all variables in mobile phone numbers. The onus is on the user at the moment to ensure the mobile is valid. #potential-future-improvement
+
 Once saved they will be taken to the guest detail page for the newly created guest. 
 
 #### Guest Detail
@@ -187,12 +189,44 @@ Users can logout here and a confirm page is shown to them prior to actually logg
 ## Database Schema
 
 ### Guests
+Field Name | Type | Notes
+---|---|---
+User | ForeignKey | Links to the user profile so we know who can access the guest
+first_name | CharField
+last_name | CharField
+mobile | CharField
+email | EmailField
+dob | DateField | Date of Birth
+sms_marketing | BooleanField
+sms_transactional | BooleanField | Not used for any checks at the moment. Useful in the future for transactional messaging
+rating | IntegerField
+service_notes | TextField
+kitchen_notes | TextField
+allergen_notes | TextField
+deleted | BooleanField | Stops the data appearing to the user
+last_updated | DateField
+
 
 ### Bookings
+Field Name | Type | Notes
+---|---|---
+user | foreignkey | connects to user model
+guest| foreignkey | connects the booking to a guest
+date | date
+time | time
+people | positiveinteger
+rating | integer
+status | charfield | links to a textchoices class in the same model
+deleted | boolean
+booking_value | positiveinteger
 
 ### Signup
-
-### Messaging
+Field Name | Type | Notes
+---|---|---
+user | onetoone | links to the allauth django user model
+first_name | charfield
+last_name | charfield
+email | emailfield
 
 ***
 
@@ -215,6 +249,7 @@ All bugs and issues that occured during build are marked FIX in the commit log i
 1. Booking Widget so that guests can create bookings directly into the system based on the restaurants settings.
 1. Improved signup flow with less steps. Ideally all in 1 or at most 2 pages.
 1. Ability for users to un-delete guests and bookings themselves to remove the need to contact support (turning it into an archived function rather than deleted).
+1. Add mobile validation that accounts for all types of mobiles
 
 
 ***
