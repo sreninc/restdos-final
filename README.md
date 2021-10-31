@@ -5,7 +5,7 @@
 
 RestDos is an app and website designed to help owners of small restaurants manage their guests, bookings and messaging. It acts as a complete CRM that empowers the restaurant team to deliver perfect service each and every time. 
 
-[![RestDos]()](https://restdos-final.herokuapp.com/)
+[![RestDos](readme_images/home.png)](https://restdos-final.herokuapp.com/)
 
 ## CONTENTS
 1. [User Stories](#user-stories)
@@ -63,18 +63,24 @@ RestDos is an app and website designed to help owners of small restaurants manag
 ### User Stories
 As a user I want to ...
 - Signup
+This is implemented through the pricing > signup flow with allauth
 - CRUD Guests
+Users can create, update, view and delete guests
 - CRUD Bookings
-- Send messages to my guests
+Users can create, update, view and delete bookings
+- Send marketing messages to my guests
+Users can create and send a campaign to all their guests
 
 ### Business Stories
 As the website owner I want to ...
 - Drive signups
+The web pages do this.
 - Generate Leads
 This is achieved through social links in the footer of the website as well as the newsletter signup at the bottom of every page.
-- To receive money from signups
-- Be able to manage queries from users
-- Be able to help users with queries or changes to their accounts
+- To receive money from signups & marketing campaigns
+The signup flow includes a stripe payment model as does the messaging app where users can send marketing campaigns
+- Be able to manage queries from users and Be able to help users with queries or changes to their accounts
+The contact from sends messages to the site owner
 
 ***
 
@@ -83,10 +89,10 @@ This is achieved through social links in the footer of the website as well as th
 
 ### Website Mockups
 The below image links to figma design file of website side the application.
-[![Website]()](https://www.figma.com/file/qAy7XQsKaKW6ekC1ssgalx/MS4?node-id=0%3A1)
+[![Website](readme_images/home.png)](https://www.figma.com/file/qAy7XQsKaKW6ekC1ssgalx/MS4?node-id=0%3A1)
 
 The below image links to figma design file of app side the application.
-[![App]()](https://www.figma.com/file/qAy7XQsKaKW6ekC1ssgalx/MS4?node-id=6%3A1470)
+[![App](readme_images/dashboard.png)](https://www.figma.com/file/qAy7XQsKaKW6ekC1ssgalx/MS4?node-id=6%3A1470)
 
 ***
 
