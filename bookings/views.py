@@ -10,6 +10,9 @@ from .forms import BookingForm
 # Create your views here.
 @login_required
 def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
+    """
+    View to generate all the bookings the user should see. Default filters to today and all bookings
+    """
 
     if status == 'all':
         bookings = Booking.objects.filter(deleted=False, date=date, user=request.user)
@@ -19,7 +22,7 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
     bookings = bookings.order_by('time')
 
     for booking in bookings:
-        booking.unrating = 5 - booking.rating
+        booking.unrating = 5 - booking.rating # rating is used to generate stars on booking page
         booking.rating = range(booking.rating)
         booking.unrating = range(booking.unrating)
         booking.status = booking.get_status_display()
@@ -37,6 +40,9 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
 
 @login_required
 def add_booking(request, guest_id):
+    """
+    View to allow the user to add a booking
+    """
 
     booking_form = BookingForm(initial={'user': request.user.id })
     guest = get_object_or_404(Guest, pk=guest_id, deleted=False, user=request.user)
@@ -71,6 +77,9 @@ def add_booking(request, guest_id):
 
 
 def edit_booking(request, booking_id):
+    """
+    View to allow the user to see a bookings details and edit them
+    """
 
     booking = get_object_or_404(Booking, pk=booking_id, deleted=False, user=request.user)
 
@@ -117,6 +126,10 @@ def edit_booking(request, booking_id):
 
 @login_required
 def delete_booking(request, booking_id):
+    """
+    View to allow the booking to be deleted
+    """
+
     booking = get_object_or_404(Booking, pk=booking_id, user=request.user)
     booking.deleted = True
     booking.save(update_fields=['deleted'])
