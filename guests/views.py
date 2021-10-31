@@ -14,6 +14,9 @@ from .forms import PersonalInformationForm
 # Create your views here.
 @login_required
 def guests(request):
+    """
+    view to show all guests to user
+    """
 
     guests = Guest.objects.filter(deleted=False, user=request.user)
     guests = guests.order_by('first_name', 'last_name')
@@ -51,6 +54,9 @@ def guests(request):
 
 @login_required
 def guest_detail(request, guest_id):
+    """
+    view to show the guest detail page to users and allow them to update it
+    """
 
     guest = get_object_or_404(Guest, pk=guest_id, user=request.user, deleted=False)
     bookings = Booking.objects.filter(guest=guest_id, deleted=False, user=request.user)
@@ -176,6 +182,9 @@ def guest_detail(request, guest_id):
 
 @login_required
 def add_guest(request):
+    """
+    view to allow the user to add a guest
+    """
     stars = range(5)
 
     personal_information_form = PersonalInformationForm(initial={'user': request.user.id })
