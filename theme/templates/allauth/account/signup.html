@@ -35,9 +35,6 @@
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <p class="pt-6">{% blocktrans %}Already have an account? Then please <a class="underline text-blue-500"
-            href="{{ login_url }}">sign
-            in</a>.{% endblocktrans %}</p>
         <form id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}
           <div class="space-y-8 divide-y divide-gray-200">
