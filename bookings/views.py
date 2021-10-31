@@ -72,7 +72,7 @@ def add_booking(request, guest_id):
 
 def edit_booking(request, booking_id):
 
-    booking = get_object_or_404(Booking, pk=booking_id, user=request.user)
+    booking = get_object_or_404(Booking, pk=booking_id, deleted=False, user=request.user)
 
     booking_form = BookingForm()
 
