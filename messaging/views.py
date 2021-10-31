@@ -26,7 +26,7 @@ def send_message(request):
 
     message = request.POST['message']
     filter = request.POST['filter']
-    receipients = Guest.objects.filter(deleted=False, user=request.user)
+    receipients = Guest.objects.filter(deleted=False, sms_marketing=True, user=request.user)
     mobiles = []
     for person in receipients:
         mobiles.append(person.mobile)
@@ -34,7 +34,7 @@ def send_message(request):
     
 
     if receipients == 0:
-        messages.info(request, 'You have no guests in your system. Please add guests in order to send messages')
+        messages.info(request, 'You either have no guests in your system or no guests with marketing sms enabled. Please add guests in order to send messages')
         return redirect('compose_message')
 
     sms_length = len(message)
