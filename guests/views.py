@@ -207,9 +207,11 @@ def add_guest(request):
         personal_information_form = PersonalInformationForm(form_data)
         if personal_information_form.is_valid():
             form = personal_information_form.save()
+            messages.success(request, f'Guest was successfully added.')
             return redirect('guest_detail', guest_id=form.id)
         else:
-            print(personal_information_form.errors)
+            messages.warning(request, 'There was an error creating the guest. Please try again or contact us.')
+            return reverse('add_guest')
 
 
     context = {
