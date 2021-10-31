@@ -113,6 +113,7 @@ def guest_detail(request, guest_id):
 
         if 'first_name' in request.POST:
             form_data = {
+                'user': request.user,
                 'first_name': request.POST['first_name'],
                 'last_name': request.POST['last_name'],
                 'email': request.POST['email'],
@@ -130,6 +131,7 @@ def guest_detail(request, guest_id):
                 print("failure")
         else:
             form_data = {
+                'user': request.user,
                 'service_notes': request.POST['service_notes'],
                 'kitchen_notes': request.POST['kitchen_notes'],
                 'allergen_notes': request.POST['allergen_notes'],
