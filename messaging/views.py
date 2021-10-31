@@ -27,9 +27,22 @@ def send_message(request):
     message = request.POST['message']
     filter = request.POST['filter']
     receipients = Guest.objects.filter(deleted=False, user=request.user)
-    print(receipients)
+    mobiles = []
+    for person in receipients:
+        mobiles.append(person.mobile)
     receipients = receipients.count()
-    print(receipients)
+    
+
+    if request.method == 'POST':
+        send_sms(
+            message,
+            'No Reply',
+            mobiles,
+            fail_silently=False
+        )
+        messages.success(request, 'Your payment was successful and you message campaign has been sent')
+
+    
 
     if receipients == 0:
         messages.info(request, 'You have no guests in your system. Please add guests in order to send messages')
@@ -70,15 +83,3 @@ def send_message(request):
         'low_cost': low_cost,
     }
     return render(request, 'messaging/send_message.html', context)
-
-
-def message_sent(request):
-    send_sms(
-        'Here is the message',
-        '+12065550100',
-        ['+441134960000'],
-        fail_silently=False
-    )
-
-    messages.success(request, 'Your payment was successful and you message campaign has been sent')
-    return redirect('compose_message')
