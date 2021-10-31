@@ -16,6 +16,7 @@ from .forms import PersonalInformationForm
 def guests(request):
 
     guests = Guest.objects.filter(deleted=False, user=request.user)
+    guests = guests.order_by('first_name', 'last_name')
     query = None
 
     if request.GET:
