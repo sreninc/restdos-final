@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator 
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -12,7 +13,7 @@ class Guest(models.Model):
     guest_since = models.DateField('Guest Since', auto_now_add=True, null=False, blank=False)
     sms_marketing = models.BooleanField('SMS Marketing Consent', default=False)
     sms_transactional = models.BooleanField('SMS Transactional Consent', default=True)
-    rating = models.IntegerField('Guest Rating', default=5, null=False, blank=False)
+    rating = models.IntegerField('Guest Rating', default=5, null=False, blank=False, validators=[MinValueValidator(1), MaxValueValidator(5)])
     service_notes = models.TextField('Service Notes', null=True, blank=True)
     kitchen_notes = models.TextField('Kitchen Notes', null=True, blank=True)
     allergen_notes = models.TextField('Allergen & Intollerances Notes', null=True, blank=True)
