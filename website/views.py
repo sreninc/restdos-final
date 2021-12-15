@@ -34,35 +34,12 @@ def pricing(request):
     """
     Show page on website
     """
-    signups = User.objects.count()
-    secondary_string = 'at a permanently lower price for the next 10 customers'
-    if signups <= 10:
-        monthly = 33
-        primary_string = " €33 a month"
-        plan = 'First Advantage'
-    elif signups <= 20:
-        monthly = 50
-        primary_string = ' €50 a month'
-        plan = 'Second Advantage'
-    elif signups <= 30:
-        monthly = 67
-        primary_string = ' €67 a month'
-        plan = 'Third Advantage'
-    elif signups <= 40:
-        monthly = 80
-        primary_string = ' €80 a month'
-        plan = 'Final Advantage'
-    else:
-        monthly = 100
-        primary_string = '100 a month'
-        plan = 'Complete Advantage'
-        secondary_string = 'including unlimited bookings and guests'
+    monthly = 19
+    plan = 'First Advantage'
 
     template = 'website/pricing.html'
     context = {
         'monthly': monthly,
-        'primary_string': primary_string,
-        'secondary_string': secondary_string,
         'plan': plan,
     }
     return render(request, template, context)
