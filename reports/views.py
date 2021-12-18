@@ -46,8 +46,8 @@ def dashboard(request,
         no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
 
     start_filter_date = datetime.now() - timedelta(days=filter)
-    start_filter_date = start_filter_date.strftime('%b %I')
-    end_filter_date = datetime.now().strftime('%b %I')
+    start_filter_date = start_filter_date.strftime('%b %e')
+    end_filter_date = datetime.now().strftime('%b %e')
     page_description = start_filter_date + ' - ' + end_filter_date
 
     stats = {
