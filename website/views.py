@@ -231,7 +231,7 @@ def guest_crm(request):
     return render(request, 'website/guest_crm.html')
     
 
-def messaging(request):
+def marketing_messaging(request):
     """
     Show page on website
     """

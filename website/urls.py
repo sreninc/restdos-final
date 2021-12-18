@@ -14,7 +14,7 @@ urlpatterns = [
     path('newsletter/', views.newsletter, name='newsletter'),
     path('demo/', views.demo, name='demo'),
     path('guest_crm/', views.guest_crm, name='guest_crm'),
-    path('messaging/', views.messaging, name='messaging'),
+    path('marketing_messaging/', views.marketing_messaging, name='marketing_messaging'),
     path('booking_management/', views.booking_management, name='booking_management'),
     path('data/', views.data, name='data'),
 ]

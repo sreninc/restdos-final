@@ -1,0 +1,123 @@
+{% extends "bases/base-app.html" %}
+
+{% block extra_title %}Messaging{% endblock %}
+
+{% block body %}
+
+{% if guests %}
+<div
+  class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+  <div
+    class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group {% if transactional_guests %}bg-white{% else %}bg-gray-50{% endif %} p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+    <div>
+      <span class="rounded-lg inline-flex p-3 bg-indigo-50 text-indigo-700 ring-4 {% if transactional_guests %}ring-white{% else %}ring-gray-50{% endif %}">
+        <!-- Heroicon name: outline/annotation -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+        </svg>
+      </span>
+    </div>
+    <div class="mt-8">
+      {% if transactional_guests %}
+      <h3 class="text-lg font-medium">
+        <a href="{% url 'compose_transactional' %}" class="focus:outline-none">
+          <!-- Extend touch target to entire panel -->
+          <span class="absolute inset-0" aria-hidden="true"></span>
+          Text Broadcast
+        </a>
+      </h3>
+      <p class="mt-2 text-sm text-gray-500">
+        Send a message to your guests when you need to communicate something related to their bookings with you.
+      </p>
+      {% else %}
+      <h3 class="text-lg font-medium cursor-not-allowed">
+          <!-- Extend touch target to entire panel -->
+          <span class="absolute inset-0" aria-hidden="true"></span>
+          Text Broadcast Unavavailable
+      </h3>
+      <p class="mt-2 text-sm text-gray-500">
+        None of your guests have Transactional SMS consent enabled.
+      </p>
+      {% endif %}
+    </div>
+    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+      </svg>
+    </span>
+  </div>
+
+  <div
+    class="sm:rounded-tr-lg relative group {% if marketing_guests %}bg-white{% else %}bg-gray-50{% endif %} p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+    <div>
+      <span class="rounded-lg inline-flex p-3 bg-indigo-50 text-indigo-700 ring-4 {% if marketing_guests %}ring-white{% else %}ring-gray-50{% endif %}">
+        <!-- Heroicon name: outline/speakerphone -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+        </svg>
+      </span>
+    </div>
+    <div class="mt-8">
+      {% if marketing_guests %}
+      <h3 class="text-lg font-medium">
+        <a href="{% url 'compose_marketing' %}" class="focus:outline-none">
+          <!-- Extend touch target to entire panel -->
+          <span class="absolute inset-0" aria-hidden="true"></span>
+          Text Marketing
+        </a>
+      </h3>
+      <p class="mt-2 text-sm text-gray-500">
+        Target your guests with text messages to get them booking in with you again.
+      </p>
+      {% else %}
+      <h3 class="text-lg font-medium cursor-not-allowed">
+        <!-- Extend touch target to entire panel -->
+        <span class="absolute inset-0" aria-hidden="true"></span>
+        Text Marketing Unavailable
+      </h3>
+      <p class="mt-2 text-sm text-gray-500">
+        None of your guests have SMS Marketing Consent enabled.
+      </p>
+      {% endif %}
+    </div>
+    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+      </svg>
+    </span>
+  </div>
+</div>
+
+{% else %}
+<div class="text-center p-12 bg-white">
+  <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
+    stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+      d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+  </svg>
+  <h3 class="mt-2 text-sm font-medium text-gray-900">No Guests Available</h3>
+  <p class="mt-1 text-sm text-gray-500">
+    You need to add guests to send messages.
+  </p>
+  <div class="mt-6">
+    <a href="{% url 'add_guest' %}"
+      class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      <!-- Heroicon name: solid/plus -->
+      <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+        aria-hidden="true">
+        <path fill-rule="evenodd"
+          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+          clip-rule="evenodd" />
+      </svg>
+      Add Guest
+    </a>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
