@@ -16,7 +16,7 @@ def index(request):
     Show page on website
     """
     header = {
-        'image': '      ',
+        'image': 'https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0',
         'image_alt': 'People working on laptops',
         'title_first': 'Grow your',
         'title_second': 'restaurant revenue',
