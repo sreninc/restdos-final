@@ -2,6 +2,34 @@
 
 {% block extra_title %}Dashboard{% endblock %}
 
+{% block primary-cta %}
+<div class="mb-5 mx-4 flex-1">
+    <label for="filterDate" class="block text-sm font-medium text-gray-700">
+        Date Range
+    </label>
+    <div class="mt-1 min-w-max">
+        <select id="filterDate" name="filterDate" onChange="window.location.href=this.value"
+            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-400 rounded-md">
+            <option value="{% url 'dashboard' filter='7' %}" {% if filter == 7 %}selected{% endif %}>
+                Last 7 Days
+            </option>
+            <option value="{% url 'dashboard' filter='14' %}" {% if filter == 14 %}selected{% endif %}>
+                Last 14 Days
+            </option>
+            <option value="{% url 'dashboard' filter='30' %}" {% if filter == 30 %}selected{% endif %}>
+                Last 30 Days
+            </option>
+            <option value="{% url 'dashboard' filter='90' %}" {% if filter == 90 %}selected{% endif %}>
+                Last 90 Days
+            </option>
+            <option value="{% url 'dashboard' filter='365' %}" {% if filter == 365 %}selected{% endif %}>
+                Last 365 Days
+            </option>
+        </select>
+    </div>
+</div>
+{% endblock %}
+
 {% block body %}
 <div>
     <dl class="my-5 grid grid-cols-1 gap-5 md:grid-cols-3">
