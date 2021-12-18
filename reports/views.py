@@ -46,9 +46,11 @@ def dashboard(request,
         no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
 
     start_filter_date = datetime.now() - timedelta(days=filter)
-    start_filter_date = start_filter_date.strftime('%b %e')
-    end_filter_date = datetime.now().strftime('%b %e')
-    page_description = start_filter_date + ' - ' + end_filter_date
+    start_date = start_filter_date.day
+    start_month = start_filter_date.strftime('%b')
+    end_month = datetime.now().strftime('%b')
+    end_date = datetime.now().day
+    page_description = start_month + ' ' + ordinal(start_date) + ' - ' + end_month + ' ' + ordinal(end_date)
 
     stats = {
         'total_guests': {
@@ -84,3 +86,13 @@ def dashboard(request,
         'page_description': page_description,
     }
     return render(request, 'reports/dashboard.html', context)
+
+
+## From https://leancrew.com/all-this/2020/06/ordinals-in-python/
+def ordinal(n):
+  s = ('th', 'st', 'nd', 'rd') + ('th',)*10
+  v = n%100
+  if v > 13:
+    return f'{n}{s[v%10]}'
+  else:
+    return f'{n}{s[v]}'
