@@ -14,6 +14,12 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
     View to generate all the bookings the user should see. Default filters to today and all bookings
     """
 
+    empty = {
+        'cause': 'No Bookings Available',
+        'context': 'You can add a booking in a guests profile. Click below to see your guests.',
+        'action': 'Go To Guests',
+    }
+
     if status == 'all':
         bookings = Booking.objects.filter(deleted=False, date=date, user=request.user)
     else:
@@ -34,6 +40,7 @@ def bookings(request, status='all', date=datetime.now().strftime('%Y-%m-%d')):
         'page': 'bookings',
         'date': date,
         'status': status,
+        'empty': empty,
     }
 
     return render(request, 'bookings/bookings.html', context)

@@ -18,6 +18,12 @@ def guests(request):
     view to show all guests to user
     """
 
+    empty = {
+        'cause': 'No Guests Available',
+        'context': 'You can add a guest by clicking the button below.',
+        'action': 'Add Guest',
+    }
+
     guests = Guest.objects.filter(deleted=False, user=request.user)
     guests = guests.order_by('first_name', 'last_name')
     query = None
@@ -48,6 +54,7 @@ def guests(request):
         'guests': guests,
         'search_term': query,
         'page': 'guests',
+        'empty': empty,
     }
 
     return render(request, 'guests/guests.html', context)
@@ -84,6 +91,12 @@ def guest_detail(request, guest_id):
         
         if bookings.filter(status='NOS'):
             no_show_percentage = (bookings.filter(status='NOS').count() / bookings.count()) * 100
+
+    empty = {
+        'cause': 'No Bookings Yet',
+        'context': 'This guest does not have any bookings yet. Click the button below to add a booking.',
+        'action': 'Add Booking',
+    }
         
 
     guest_age = (datetime.now() - datetime.combine(guest.guest_since, datetime.min.time())).days
@@ -177,6 +190,7 @@ def guest_detail(request, guest_id):
         'stats': stats,
         'bookings': bookings,
         'page': 'guests',
+        'empty': empty,
     }
     return render(request, 'guests/guest_detail.html', context)
 
