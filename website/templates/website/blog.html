@@ -4,33 +4,7 @@
 
 {% block body %}
 <!-- Hero section -->
-<div class="relative">
-    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
-        <div class="absolute inset-0">
-          <img class="h-full w-full object-cover" src="https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0" alt="People working on laptops">
-          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 mix-blend-multiply"></div>
-        </div>
-        <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-          <h1 class="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-            <span class="block text-white">Grow your</span>
-            <span class="block text-indigo-200">restaurant revenue</span>
-          </h1>
-          <p class="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
-            Take control of your guest database to grow your restaurant. Powerful messaging, complete guest management and effective booking management that works for you.
-          </p>
-          <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-            <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-              <a href="{% url 'pricing' %}" class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8">
-                Get started
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+{% include 'includes/components/website_hero.html' %}
 
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">

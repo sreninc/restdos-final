@@ -15,7 +15,23 @@ def index(request):
     """
     Show page on website
     """
-    return render(request, 'website/index.html')
+    header = {
+        'image': '      ',
+        'image_alt': 'People working on laptops',
+        'title_first': 'Grow your',
+        'title_second': 'restaurant revenue',
+        'explainer': 'Take control of your guest database to grow your restaurant. Powerful messaging, complete guest management and effective booking management that works for you.',
+        'cta_one_url': 'pricing',
+        'cta_one_label': 'Get Started',
+        'cta_two_url': 'live_demo',
+        'cta_two_label': 'Live Demo',
+    }
+
+    context = {
+        'header': header,
+    }
+
+    return render(request, 'website/index.html', context)
 
 
 def newsletter(request):
@@ -37,10 +53,23 @@ def pricing(request):
     monthly = 19
     plan = 'First Advantage'
 
+    header = {
+        'image': 'https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0',
+        'image_alt': 'People working on laptops',
+        'title_first': 'Let\'s Grow Your',
+        'title_second': 'restaurant revenue',
+        'explainer': 'Simple plans, great pricing and a 30 day no questions money back guarantee.',
+        'cta_one_url': '',
+        'cta_one_label': '',
+        'cta_two_url': '',
+        'cta_two_label': '',
+    }
+
     template = 'website/pricing.html'
     context = {
         'monthly': monthly,
         'plan': plan,
+        'header': header,
     }
     return render(request, template, context)
 
@@ -49,6 +78,18 @@ def contact(request):
     """
     Show page on website
     """
+    header = {
+        'image': 'https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0',
+        'image_alt': 'People working on laptops',
+        'title_first': 'Contact Us',
+        'title_second': '',
+        'explainer': 'Take control of your guest database to grow your restaurant. Powerful marketing, complete guest management and effective automated messaging that works for you.',
+        'cta_one_url': '',
+        'cta_one_label': '',
+        'cta_two_url': '',
+        'cta_two_label': '',
+    }
+    
     if request.method == 'POST':
         email = request.POST['email']
         first_name = request.POST['first-name']
@@ -60,7 +101,12 @@ def contact(request):
         send_mail('New Message', message, email, ['sean@restdos.com'])
         messages.success(request, 'You have successfully sent a message to \
                          us. We will reply to your email: {email}')
-    return render(request, 'website/contact.html')
+
+    context = {
+        'header': header,
+    }
+
+    return render(request, 'website/contact.html', context)
 
 
 def signup(request, signup_plan, signup_monthly):
@@ -109,21 +155,66 @@ def terms(request):
     """
     Show page on website
     """
-    return render(request, 'website/terms_and_conditions.html')
+    header = {
+        'image': 'https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0',
+        'image_alt': 'People working on laptops',
+        'title_first': 'Terms & Conditions',
+        'title_second': '',
+        'explainer': 'Last Updated: October 18, 2021.',
+        'cta_one_url': '',
+        'cta_one_label': '',
+        'cta_two_url': '',
+        'cta_two_label': '',
+    }
+
+    context = {
+        'header': header,
+    }
+    return render(request, 'website/terms_and_conditions.html', context)
 
 
 def privacy(request):
     """
     Show page on website
     """
-    return render(request, 'website/privacy.html')
+    header = {
+        'image': 'https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0',
+        'image_alt': 'People working on laptops',
+        'title_first': 'Privacy Policy',
+        'title_second': '',
+        'explainer': 'Last Updated: October 18, 2021.',
+        'cta_one_url': '',
+        'cta_one_label': '',
+        'cta_two_url': '',
+        'cta_two_label': '',
+    }
+
+    context = {
+        'header': header,
+    }
+    return render(request, 'website/privacy.html', context)
 
 
 def blog(request):
     """
     Show page on website
     """
-    return render(request, 'website/blog.html')
+    header = {
+        'image': 'https://th.bing.com/th/id/R.00c5a689df7665ce66043a96a830dbcd?rik=bK47uc03GDr4Gw&riu=http%3a%2f%2fwww.buro247.me%2fimages%2fCA1-BK_Dining13.gif&ehk=JD6Pt2aBzXPkCFDny31UpN7IOMdioZ2xlb5vNDz1rfU%3d&risl=&pid=ImgRaw&r=0',
+        'image_alt': 'People working on laptops',
+        'title_first': 'Grow your',
+        'title_second': 'restaurant revenue',
+        'explainer': 'Take control of your guest database to grow your restaurant. Powerful messaging, complete guest management and effective booking management that works for you.',
+        'cta_one_url': 'pricing',
+        'cta_one_label': 'Get Started',
+        'cta_two_url': 'live_demo',
+        'cta_two_label': 'Live Demo',
+    }
+
+    context = {
+        'header': header,
+    }
+    return render(request, 'website/blog.html', context)
 
 
 def demo(request):
