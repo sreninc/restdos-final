@@ -112,12 +112,30 @@ def guest_detail(request, guest_id):
     guest_age = str(years) + "Y " + str(months) + "M " + str(days) + "D"
 
     stats = {
-        'guest_age': guest_age,
-        'total_bookings': total_bookings,
-        'total_sales': total_sales,
-        'no_show_percentage': no_show_percentage,
-        'completed_percentage': completed_percentage,
-        'avg_booking_value': avg_booking_value,
+        'guest_age': {
+            'name': 'Guest Age',
+            'value': guest_age,
+        },
+        'total_bookings': {
+            'name': 'Total Bookings',
+            'value': total_bookings,
+        },
+        'total_sales': {
+            'name': 'Total Sales',
+            'value': total_sales,
+        },
+        'no_show_percentage': {
+            'name': 'No-Show %',
+            'value': no_show_percentage,
+        },
+        'completed_percentage': {
+            'name': 'Completed %',
+            'value': completed_percentage,
+        },
+        'avg_booking_value': {
+            'name': 'Average Booking Value',
+            'value': avg_booking_value,
+        },
     }
 
 
