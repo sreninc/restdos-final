@@ -1,0 +1,14 @@
+<div>
+    <dl class="my-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+        {% for stat in stats.values %}
+        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
+            <dt class="text-sm font-medium text-white truncate uppercase">
+                {{ stat.name }}
+            </dt>
+            <dd class="mt-1 text-3xl font-semibold text-white">
+                {{ stat.value }}
+            </dd>
+        </div>
+        {% endfor %}
+    </dl>
+</div>

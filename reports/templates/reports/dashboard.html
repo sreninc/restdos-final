@@ -31,66 +31,7 @@
 {% endblock %}
 
 {% block body %}
-<div>
-    <dl class="my-5 grid grid-cols-1 gap-5 md:grid-cols-3">
-        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
-            <dt class="text-sm font-medium text-white truncate uppercase">
-                Total Guests
-            </dt>
-            <dd class="mt-1 text-3xl font-semibold text-white">
-                {{ stats.total_guests }}
-            </dd>
-        </div>
 
-        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
-            <dt class="text-sm font-medium text-white truncate uppercase">
-                Total Bookings
-            </dt>
-            <dd class="mt-1 text-3xl font-semibold text-white">
-                {{ stats.total_bookings }}
-            </dd>
-        </div>
-
-        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
-            <dt class="text-sm font-medium text-white truncate uppercase">
-                Total Sales
-            </dt>
-            <dd class="mt-1 text-3xl font-semibold text-white">
-                €{{ stats.total_sales|floatformat }}
-            </dd>
-        </div>
-    </dl>
-</div>
-
-<div>
-    <dl class="my-5 grid grid-cols-1 gap-5 md:grid-cols-3">
-        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
-            <dt class="text-sm font-medium text-white truncate uppercase">
-                % No-Shows
-            </dt>
-            <dd class="mt-1 text-3xl font-semibold text-white">
-                {{ stats.no_show_percentage|floatformat }}%
-            </dd>
-        </div>
-
-        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
-            <dt class="text-sm font-medium text-white truncate uppercase">
-                % Completed
-            </dt>
-            <dd class="mt-1 text-3xl font-semibold text-white">
-                {{ stats.completed_percentage|floatformat }}%
-            </dd>
-        </div>
-
-        <div class="px-4 py-5 bg-blue-700 shadow rounded-lg overflow-hidden sm:p-6">
-            <dt class="text-sm font-medium text-white truncate uppercase ">
-                Avg. Booking Value
-            </dt>
-            <dd class="mt-1 text-3xl font-semibold text-white">
-                €{{ stats.avg_booking_value|floatformat }}
-            </dd>
-        </div>
-    </dl>
-</div>
+{% include 'includes/components/stat_card.html' %}
 
 {% endblock %}
