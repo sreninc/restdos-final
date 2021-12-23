@@ -18,6 +18,16 @@ from .forms import MessagingCampaignForm
 
 @login_required
 def messaging(request):
+    """
+    A view to show the messaging homepage.
+    Shows null state where no guests have been created
+    """
+
+    empty = {
+        'cause': 'No Guests Available',
+        'context': 'You can add a guest by clicking the button below.',
+        'action': 'Add Guest',
+    }
 
     guests = Guest.objects.filter(deleted=False, user=request.user).count()
     marketing_guests = Guest.objects.filter(deleted=False, user=request.user, sms_marketing=True).count()
@@ -28,6 +38,7 @@ def messaging(request):
         'guests': guests,
         'marketing_guests': marketing_guests,
         'transactional_guests': transactional_guests,
+        'empty': empty,
     }
     return render(request, 'messaging/index.html', context)
 
