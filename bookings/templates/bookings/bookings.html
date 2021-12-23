@@ -3,6 +3,8 @@
 {% block extra_title %}Bookings{% endblock %}
 
 {% block primary-cta %}
+
+{% if bookings %}
 <div class="mx-4 flex-1">
     <label for="filterDate" class="block text-sm font-medium text-gray-700">
         Date
@@ -13,8 +15,13 @@
             onChange=filterDate(this.value)>
     </div>
 </div>
+{% endif %}
+
 {% endblock%}
+
 {% block secondary-cta %}
+
+{% if bookings %}
 <div class="mx-4 flex-1">
     <label for="filterStatus" class="block text-sm font-medium text-gray-700">
         Status
@@ -55,6 +62,8 @@
         </select>
     </div>
 </div>
+{% endif %}
+
 {% endblock %}
 
 {% block body %}
